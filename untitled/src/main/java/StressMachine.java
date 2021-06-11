@@ -35,7 +35,7 @@ public class StressMachine {
                 }else {
                     String choice = sc.next();
 
-                    if (choice == "y" || choice =="Y") {
+                    if (choice.equals("y") || choice.equals("Y")) {
                         continue;
                     } else {
                         System.out.println("프로그램을 종료합니다");
