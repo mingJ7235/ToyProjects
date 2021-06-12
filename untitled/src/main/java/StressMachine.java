@@ -8,9 +8,9 @@ public class StressMachine {
         int result = 0;
         String exitmsg = "계속하시겠습니까? (y/n)";
 
-        if (msg.contains("?") || msg.contains("죽을래") || msg.contains("힘들어")) {
+        if (msg.contains("빌드왜안돼") || msg.contains("죽을래") || msg.contains("힘들어")) {
             result = 0;
-            System.out.println("죄송합니다");
+            System.out.println("죄송합니다ㅠㅠㅠㅠㅠㅠㅠ");
 
         } else {
             result = 1;
@@ -36,13 +36,12 @@ public class StressMachine {
                     String choice = sc.next();
 
                     if (choice.equals("y") || choice.equals("Y")) {
-                        continue;
+
                     } else {
                         System.out.println("프로그램을 종료합니다");
                         break;
                     }
                 }
-
             } else {
                 System.out.println("스트레스봇을 종료합니다.");
             }
