@@ -33,12 +33,12 @@ public class CalFunctions {
             addArray.add(num1);
             addArray.add(num2);
             addArray.add(num3);
-            System.out.println(mc.add(addArray));
+            System.out.println("계산결과 : " + mc.add(addArray));
 
         } else {
             addArray.add(num1);
             addArray.add(num2);
-            System.out.println(mc.add(addArray));
+            System.out.println("계산결과 : " + mc.add(addArray));
         }
     }
 
@@ -66,12 +66,12 @@ public class CalFunctions {
             minusArray.add(num1);
             minusArray.add(num2);
             minusArray.add(num3);
-            System.out.println(mc.minus(minusArray));
+            System.out.println("계산결과 : " + mc.minus(minusArray));
 
         } else {
             minusArray.add(num1);
             minusArray.add(num2);
-            System.out.println(mc.minus(minusArray));
+            System.out.println("계산결과 : " + mc.minus(minusArray));
         }
     }
 
@@ -99,12 +99,24 @@ public class CalFunctions {
             multiArray.add(num1);
             multiArray.add(num2);
             multiArray.add(num3);
-            System.out.println(mc.multi(multiArray));
+            System.out.println("계산결과 : " + mc.multi(multiArray));
 
         } else {
             multiArray.add(num1);
             multiArray.add(num2);
-            System.out.println(mc.multi(multiArray));
+            System.out.println("계산결과 : " + mc.multi(multiArray));
         }
+    }
+
+    public void divide () {
+        System.out.println("나눗셈입니다. (나눗셈은 2개의 숫자 연산만 제공됩니다)\n" +
+                "최소 2가지의 숫자를 순서대로 적어주세요");
+        System.out.print("첫번째 숫자 :");
+        Double num1 = Double.parseDouble(sc.next());
+        System.out.print("두번째 숫자 :");
+        double num2 = Double.parseDouble(sc.next());
+
+        System.out.println("계산결과 : " + mc.divide(num1, num2));
+
     }
 }

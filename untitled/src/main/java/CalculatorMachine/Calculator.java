@@ -29,6 +29,7 @@ public class Calculator {
                     cf.multi();
                     break;
                 case 4:
+                    cf.divide();
                     break;
 
                 case 5 :

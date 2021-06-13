@@ -39,7 +39,7 @@ public class MathCal {
         return result;
     }
 
-    public String devide (Double num1, Double num2) {
+    public String divide (Double num1, Double num2) {
         String result = "";
 
         if (num2 != 0) {
