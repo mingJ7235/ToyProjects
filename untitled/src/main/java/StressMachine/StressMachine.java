@@ -1,3 +1,4 @@
+package StressMachine;
 
 import java.util.Scanner;
 

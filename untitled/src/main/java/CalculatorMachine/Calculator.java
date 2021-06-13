@@ -37,14 +37,6 @@ public class Calculator {
                     loopCheck = false;
                     break;
             }
-
-
-
-
-
-            //덧셈 위한 어레이리스트
-
-
         }
 
     }
