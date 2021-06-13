@@ -171,15 +171,15 @@ public class MemberController {
     }
 
     //	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
-    @PostMapping(value = "/findpw")
-    public void findPwPOST(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
-//	public void findPwPOST(String memberId, String memberEmail, HttpServletResponse response) throws Exception{
-        log.info("post메핑 완료");
-        //	log.info(memberId + "  " + memberEmail);
-        log.info(response);
-        log.info(response);
-        service.findPw(response, member);
-    }
+//    @PostMapping(value = "/findpw")
+//    public void findPwPOST(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
+////	public void findPwPOST(String memberId, String memberEmail, HttpServletResponse response) throws Exception{
+//        log.info("post메핑 완료");
+//        //	log.info(memberId + "  " + memberEmail);
+//        log.info(response);
+//        log.info(response);
+//        service.findPw(response, member);
+//    }
 
 
 
