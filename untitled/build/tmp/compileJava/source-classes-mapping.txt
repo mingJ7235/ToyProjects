@@ -1,6 +1,8 @@
 StressMachine.java
  StressMachine
-CalculatorMachine/MathCal.java
- CalculatorMachine.MathCal
 CalculatorMachine/Calculator.java
  CalculatorMachine.Calculator
+CalculatorMachine/CalFunctions.java
+ CalculatorMachine.CalFunctions
+CalculatorMachine/MathCal.java
+ CalculatorMachine.MathCal

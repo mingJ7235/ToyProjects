@@ -30,7 +30,7 @@ public class MathCal {
     }
 
     public Double multi (List<Double> typeDoubleArr) {
-        Double result = 0.0;
+        Double result = 1.0;
 
         for (int i = 0; i < typeDoubleArr.size() ; i++) {
             result *= typeDoubleArr.get(i);
