@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joshua.mapper.MemberMapper">
+    <!-- 회원가입 -->
+    <!--
+    String memberId;
+    String memberPw;
+    String memberName;
+    int memberAge;
+    String memberEmail;
+    String memberZipcode;
+    String memberLocation;
+    String memberLocationDetail;
+    String memberCanOne;
+    String memberCanTwo;
+    String memberCanThree;
+    String memberWantOne;
+    String memberWantTwo;
+    String memberWantThree;
+     -->
+    <insert id="join">
+        INSERT INTO TBL_LIGHTMEMBER (MEMBERID, MEMBERPW, MEMBERNAME, MEMBERAGE, MEMBEREMAIL, MEMBERZIPCODE, MEMBERLOCATION, MEMBERLOCATIONDETAIL, MEMBERCANONE, MEMBERCANTWO, MEMBERCANTHREE, MEMBERWANTONE, MEMBERWANTTWO, MEMBERWANTTHREE)
+        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberAge}, #{memberEmail}, #{memberZipcode},
+        #{memberLocation}, #{memberLocationDetail}, #{memberCanOne}, #{memberCanTwo}, #{memberCanThree},
+        #{memberWantOne}, #{memberWantTwo}, #{memberWantThree})
+    </insert>
+
+
+    <!-- 가입할때 (아이디 중복체크검사) -->
+
+    <select id="checkId" resultType="_int">
+        SELECT COUNT(MEMBERID) FROM TBL_LIGHTMEMBER WHERE MEMBERID = #{memberId}
+    </select>
+
+    <!-- 가입할때 (이메일 중복검사)-->
+    <select id="checkEmail" resultType="_int">
+        SELECT COUNT(MEMBEREMAIL) FROM TBL_LIGHTMEMBER WHERE MEMBEREMAIL = #{memberEmail}
+    </select>
+
+    <!-- 아이디 찾기  -->
+    <select id="findIdCheck" resultType ="_int">
+        SELECT COUNT(MEMBERID) FROM TBL_LIGHTMEMBER WHERE MEMBERNAME = #{memberName} AND MEMBEREMAIL = #{memberEmail}
+    </select>
+
+    <select id="findId" resultType ="string">
+        SELECT MEMBERID FROM TBL_LIGHTMEMBER WHERE MEMBERNAME = #{memberName} AND MEMBEREMAIL = #{memberEmail}
+    </select>
+
+    <!-- 비밀번호 찾기 -->
+
+    <select id="findPwCheck" resultType = "_int">
+        SELECT COUNT(MEMBERPW) FROM TBL_LIGHTMEMBER WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail}
+    </select>
+
+    <update id="updatePw" >
+        UPDATE TBL_LIGHTMEMBER SET MEMBERPW = #{memberPw} WHERE MEMBERID = #{memberId}
+    </update>
+
+    <!-- id로 전체 member 객체의 정보 불러오기 -->
+    <select id="readMember" resultType ="com.joshua.domain.MemberVO">
+        SELECT * FROM TBL_LIGHTMEMBER WHERE MEMBERID = #{memberId}
+    </select>
+
+
+    <!-- 로그인 -->
+    <select id="login" resultType="_int">
+        SELECT COUNT(MEMBERID) FROM TBL_LIGHTMEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = #{memberPw}
+    </select>
+
+    <!-- footer로 부터 오는 고객 메세지 저장 테이블  -->
+
+
+</mapper>

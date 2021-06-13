@@ -2,6 +2,19 @@ server :
     port : 8089
 
 spring :
+  thymeleaf :
+      cache : false
+      prefix : file:src/main/resources/templates/
+
   datasource :
       driver-class-name : com.mysql.cj.jdbc.Driver
-      url : jdbc:mysql://
+      url : jdbc:mysql://52.79.174.201:3306/MUTPEOPLE?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+      username : root
+      password : 4Tkfkdwlrl@
+
+  devtools :
+      restart :
+          enabled :false
+
+mybatis :
+  mapper-locations: classpath:mybatis/mapper/**.xml
