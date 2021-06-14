@@ -30,19 +30,20 @@ public class Calculator_oper {
             String compare_number = "1234567890";
             String compare_oper = "+-*/";
             // 1+2+3
-            for (int j = 0; j< compare_number.length(); j ++) {
-                if (letter == compare_number.charAt(j)){
+            for (int j = 0; j< user_data.length(); j ++) {
+                if (letter == compare_number.charAt(0)){
 
                 } else if (letter == compare_oper.charAt(j)) {
-                    if (i == 0) {
+                    if (letter == user_data.charAt(0)) {
                         //수식의 첫 부분이 oper일경우
                         System.out.println("'" + user_data +"' 는 잘못된 수식입니다. 프로그램을 종료합니다.");
                         break;
                     }
 
 
+
                 } else if (letter == '.'){
-                    if (i == 0) {
+                    if (letter == user_data.charAt(0)) {
                         //수식의 첫 부분이 .일경우
                         System.out.println("'" + user_data +"' 는 잘못된 수식입니다. 프로그램을 종료합니다.");
                         break;
