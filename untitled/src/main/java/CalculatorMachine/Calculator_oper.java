@@ -30,8 +30,9 @@ public class Calculator_oper {
             String compare_number = "1234567890";
             String compare_oper = "+-*/";
             // 1+2+3
-            for (int j = 0; j< user_data.length(); j ++) {
-                if (letter == compare_number.charAt(0)){
+            for (int j = 0; j < compare_number.length(); j ++) {
+                //letter가 숫자인지 아닌지 검사
+                if (letter == ){
 
                 } else if (letter == compare_oper.charAt(j)) {
                     if (letter == user_data.charAt(0)) {
