@@ -32,7 +32,7 @@ public class Calculator_oper {
             // 1+2+3
             for (int j = 0; j < compare_number.length(); j ++) {
                 //letter가 숫자인지 아닌지 검사
-                if (letter == ){
+                if (letter == compare_number.charAt(j)){
 
                 } else if (letter == compare_oper.charAt(j)) {
                     if (letter == user_data.charAt(0)) {
