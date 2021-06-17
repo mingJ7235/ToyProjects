@@ -27,36 +27,38 @@ public class CalcExp2 {
                 pre_equation += pre_exp.charAt(i);
             }
 
-            System.out.println("입력하신 수식 '" + pre_equation +"'을 계산합니다.");
         }
+        System.out.println("입력하신 수식 '" + pre_equation +"'을 계산합니다.");
 
         for (i = 0; i < pre_equation.length(); i ++) {
             //자른 숫자를 넣을 String변수
             String scumNum = "";
+            System.out.println((i+1) +"번째 숫자 : " + pre_equation.charAt(i));
             for (int j = 0; j < arrNum.length(); j ++) {
                 //숫자 검사 (반복 돌려서 숫자 배열에 하나라도 일치할 경우)
-                if (pre_equation.charAt(i) == arrNum.charAt(j)) {
+                char temp = pre_equation.charAt(i);
+                if (temp == arrNum.charAt(j)) {
+                    scumNum += temp;
+                    System.out.println("누적 : " +scumNum);
                     if (pre_equation.charAt(i+1) == arrNum.charAt(j)){
-                        scumNum += pre_equation.charAt(i);
+                        continue;
                     }else {
                         //pre_equation 다음 문자가 숫자가 아닌경우
+                        scumNum += " "; //공백 추가 (나중의 구분점)
+                        scumNums.add(scumNum); //문자 하나 넣기
                     }
-                    scumNum += " "; //공백 추가 (나중의 구분점)
-                    scumNums.add(scumNum); //문자 하나 넣기
                 }
             }
-
+            System.out.println("scumNum:"+ scumNum);
+            System.out.println("첫번째 숫자 " + scumNums.get(0));
             for (int j = 0; j < arrOper.length(); j ++) {
                 if(pre_equation.charAt(i) == arrOper.charAt(j)) {
                     //oper 인경우
+                    System.out.println("연산자 : " + pre_equation.charAt(i));
                 }
             }
         }
-
-
         StringTokenizer st = new StringTokenizer(pre_exp, " ");
-
-
     }
 
 }

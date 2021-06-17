@@ -8,3 +8,5 @@ CalculatorMachine/Calculator.java
  CalculatorMachine.Calculator
 CalculatorMachine/Calculator_oper.java
  CalculatorMachine.Calculator_oper
+CalculatorMachine/CalcExp2.java
+ CalculatorMachine.CalcExp2
