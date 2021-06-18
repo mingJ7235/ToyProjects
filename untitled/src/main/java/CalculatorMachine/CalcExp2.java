@@ -45,8 +45,6 @@ public class CalcExp2 {
             }
         }
 
-
-
         scumNum += " "; //공백 추가 (나중의 구분점)
         scumNums.add(scumNum); //문자 하나 넣기
         System.out.println("scumNum:"+ scumNum);
