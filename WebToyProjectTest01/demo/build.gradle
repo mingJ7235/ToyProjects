@@ -1,0 +1,67 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.asciidoctor.convert' version '1.5.8'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('snippetsDir', file("build/generated-snippets"))
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-integration'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+	implementation 'org.springframework.integration:spring-integration-http'
+	implementation 'org.springframework.integration:spring-integration-jdbc'
+	implementation 'org.springframework.integration:spring-integration-jpa'
+	implementation 'org.springframework.integration:spring-integration-security'
+	implementation 'org.springframework.integration:spring-integration-ws'
+	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation group: 'org.springframework', name: 'springloaded', version: '1.2.8.RELEASE'
+	compileOnly 'org.projectlombok:lombok'
+
+	//spring boot는 기본적으로 .jsp를 지원하지 않으므로 우회하는 방법을 사용하여 jsp를 읽도록 만들어야한다.
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+
+	//jstl 문법사용할수있도록
+	compile('javax.servlet:jstl')
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.integration:spring-integration-test'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	//testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	outputs.dir snippetsDir
+	useJUnitPlatform()
+}
+
+asciidoctor {
+	inputs.dir snippetsDir
+	dependsOn test
+}
