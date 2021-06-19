@@ -21,7 +21,6 @@ public class CalcExp2 {
 
         String pre_exp = sc.nextLine();
 
-
         for (i = 0; i < pre_exp.length(); i ++) {
             if(pre_exp.charAt(i) == ' ') {
                 //공백이 있을경우 넘김
