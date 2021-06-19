@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController //ResponseBody 어노테이션기능 포함 -> 즉 return 값이 그대로 출력된다.
 //@Controller의 주용도 -> view(화면)을 리턴하는 것이다. 서비스함수에 @ResponseBody를 사용하여 객체를 리턴할 수 있다.
 //@RestController의 주용도는 데이터를 리턴한다.
-public class DemoApplication {
+public class Application {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@RequestMapping ("/")

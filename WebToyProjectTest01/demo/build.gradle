@@ -24,7 +24,6 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
@@ -35,11 +34,16 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	implementation 'org.springframework.integration:spring-integration-http'
 	implementation 'org.springframework.integration:spring-integration-jdbc'
-	implementation 'org.springframework.integration:spring-integration-jpa'
 	implementation 'org.springframework.integration:spring-integration-security'
 	implementation 'org.springframework.integration:spring-integration-ws'
 	implementation 'org.springframework.session:spring-session-jdbc'
 	implementation group: 'org.springframework', name: 'springloaded', version: '1.2.8.RELEASE'
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+	// https://mvnrepository.com/artifact/log4j/log4j
+	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+
+
 	compileOnly 'org.projectlombok:lombok'
 
 	//spring boot는 기본적으로 .jsp를 지원하지 않으므로 우회하는 방법을 사용하여 jsp를 읽도록 만들어야한다.
