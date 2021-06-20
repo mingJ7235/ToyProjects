@@ -25,7 +25,7 @@
         #{memberWantOne}, #{memberWantTwo}, #{memberWantThree})
     </insert>
 
-    <select id="test" resultType="string">
+    <select id="selectMemberID" resultType="string">
         SELECT MEMBERID FROM MEMBERTBL
     </select>
 
