@@ -4,8 +4,12 @@ spring:
     url: jdbc:mysql://localhost:3306/springbootproject?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: 1234
+  devtools:
+    livereload:
+      enabled: true
+    freemarker:
+      cache: false
 
-//서버설정
 server:
   port: 7055
 
