@@ -1,5 +1,6 @@
 package com.project.springbootproject.controller;
 
+import com.project.springbootproject.dto.BoardDto;
 import com.project.springbootproject.service.BoardService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class BoardController {
     }
 
     @PostMapping ("/post")
-    public String write () {
+    public String write (BoardDto boardDto) {
         boardService.savePost(boardDto);
 
         return "redirect:/";
