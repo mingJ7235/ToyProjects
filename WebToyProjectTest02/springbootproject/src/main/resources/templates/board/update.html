@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form th:action="@{'/post/edit' + ${boardDto.id}" method="POST">
+    <form th:action="@{'/post/edit/' + ${boardDto.id}}" method="POST">
         <!-- controller에서 put 방식의 메소드로  매핑시키기 위함이다.-->
         <input type="hidden" name="_method" value="put"/>        
         <input type="hidden" name="id" th:value="${boardDto.id}"/>
