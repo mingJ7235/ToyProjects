@@ -2,7 +2,6 @@ package com.project.springbootproject.controller;
 
 import com.project.springbootproject.dto.BoardDto;
 import com.project.springbootproject.service.BoardService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +14,6 @@ import java.util.List;
 public class BoardController {
     private BoardService boardService;
 
-    @GetMapping("/")
-    public String list(Model model) {
-        List<BoardDto> boardList = boardService.getBoardlist();
-
-        //Presentation TIER 에 넘길 변수 boardList
-        //Model 객체를 통해 addAttribute로 Presentation TIER에 데이터를 전달한다.
-        model.addAttribute("boardList", boardList);
-
-        return "board/list.html";
-    }
-
     @GetMapping ("/post")
     public String write () {
         return "board/write.html";
@@ -36,6 +24,17 @@ public class BoardController {
         boardService.savePost(boardDto);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/")
+    public String list(Model model) {
+        List<BoardDto> boardList = boardService.getBoardlist();
+
+        //Presentation TIER 에 넘길 변수 boardList
+        //Model 객체를 통해 addAttribute로 Presentation TIER에 데이터를 전달한다.
+        model.addAttribute("boardList", boardList);
+
+        return "board/list.html";
     }
 
     @GetMapping("/post/{no}")
