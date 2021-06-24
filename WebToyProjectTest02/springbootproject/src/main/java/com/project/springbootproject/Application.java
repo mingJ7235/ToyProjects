@@ -8,13 +8,13 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class BoardApplication {
+public class Application {
 
 	public static void main(String[] args) {
 		//devtools property settings (커스텀 세팅)
 		//System.setProperty("spring.devtools.restart.enabled", "false");
 		//System.setProperty("spring.devtools.livereload.enabled", "true");
-		SpringApplication.run(BoardApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Bean
