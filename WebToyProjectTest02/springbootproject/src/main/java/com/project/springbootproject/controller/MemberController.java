@@ -17,7 +17,7 @@ public class MemberController {
     //메인페이지
     @GetMapping("/")
     public String home() {
-        return "member/home";
+        return "member/mainpage";
     }
 
     //회원가입
