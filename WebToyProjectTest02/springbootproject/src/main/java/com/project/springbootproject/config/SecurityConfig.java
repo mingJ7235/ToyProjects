@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 //페이지 권한 설정
-                        .antMatchers("/admin/**").hasRole("ADMIN") //ENUM 클래스인 Role에서 정의!
+                        .antMatchers("/admin/**").hasRole("ADMIN") //ENUM 클래스인 Role 에서 정의!
                     .antMatchers("/user/myinfo").hasRole("MEMBER")
                     .antMatchers("/**").permitAll()
                 .and() //로그인 설정
