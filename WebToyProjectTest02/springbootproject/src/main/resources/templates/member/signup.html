@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Signup page</title>
@@ -12,13 +12,10 @@
               <input type="text" name="email" th:value="${memberDto.email}" placeholder="이메일을 입력해주세요.">
               <span th:text="${valid_email}"></span>
           </div>
-
-
           <div>
               <input type="password" name="password" placeholder="비밀번호">
               <span th:text="${valid_password}"></span>
           </div>
-
           <button>등록</button>
      </form>
 

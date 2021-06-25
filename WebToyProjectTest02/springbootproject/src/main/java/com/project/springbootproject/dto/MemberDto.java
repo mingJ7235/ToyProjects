@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class MemberDto {
     private Long id;
 
-    @NotBlank(message = "닉네임은 필수 입력값입니다.")
+    @NotBlank(message = "이메일은 필수 입력값입니다.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
 
@@ -36,7 +36,6 @@ public class MemberDto {
     }
 
     @Builder
-
     public MemberDto(Long id, String email, String password) {
         this.id = id;
         this.email = email;

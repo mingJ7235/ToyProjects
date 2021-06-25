@@ -27,14 +27,14 @@ public class MemberController {
 
     //회원가입
     @GetMapping("/user/signup")
-    public String dispSignup () {
-        System.out.println("url요청은 가는가?");
+    public String dispSignup (MemberDto memberDto) {
         return "member/signup";
     }
 
     //회원가입 로직 처리
     @PostMapping("/user/signup")
     public String execSignup (@Valid MemberDto memberDto, Errors errors, Model model) {
+        System.out.println(errors.hasErrors());
         if(errors.hasErrors()) {
             //회원가입 실패시, 입력 데이터를 유지
             model.addAttribute("memberDto", memberDto);
@@ -48,6 +48,7 @@ public class MemberController {
         }
         //에러가 아니라면
         memberService.joinUser(memberDto);
+        System.out.println("유효성검사 실패");
         return "redirect:/user/login";
     }
 
