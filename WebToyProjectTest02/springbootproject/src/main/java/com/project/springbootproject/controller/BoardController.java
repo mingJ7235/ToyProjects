@@ -37,11 +37,13 @@ public class BoardController {
     }
 
     //글쓰기 기능
+    //@RequestMapping(value = "/post", method = {RequestMethod.POST})
     @PostMapping ("/post")
     public String write (BoardDto boardDto) {
+        System.out.println("들어옴?");
         boardService.savePost(boardDto);
 
-        return "redirect:/";
+        return "redirect:/board";
     }
 
     //게시판 상세보기 페이지 이동
@@ -65,7 +67,7 @@ public class BoardController {
     public String update(BoardDto boardDto) {
         boardService.savePost(boardDto);
 
-        return "redirect:/";
+        return "redirect:/board";
     }
 
     //게시판 삭제 기능
@@ -73,7 +75,7 @@ public class BoardController {
     public String delete(@PathVariable("no") Long no) {
         boardService.deletePost(no);
 
-        return "redirect:/";
+        return "redirect:/board";
     }
 
     //게시판 검색기능
