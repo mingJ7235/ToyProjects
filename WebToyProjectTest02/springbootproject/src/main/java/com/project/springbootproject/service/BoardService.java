@@ -44,7 +44,7 @@ public class BoardService {
         return boardDtoList;
     }
 
-    //게시판 상세보기
+    //게시판 상세보기 (return으로 BoardDTO 넘기기)
     @Transactional
     public BoardDto getPost (Long id) {
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
