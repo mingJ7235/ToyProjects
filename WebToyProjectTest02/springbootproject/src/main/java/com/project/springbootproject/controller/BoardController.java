@@ -16,12 +16,16 @@ public class BoardController {
 
     //게시판 목록 (게시판메인)
     @GetMapping("/board")
-    public String list(Model model) {
-        List<BoardDto> boardList = boardService.getBoardlist();
+    //defaultValue를 설정해줘야한다. 그렇지않으면 초기 접속시 길을 잃는다.
+    public String list(Model model, @RequestParam (value="page", defaultValue = "1") Integer pageNum) {
+        List<BoardDto> boardList = boardService.getBoardlist(pageNum);
+            //pageList는 service에서 비지니스 로직을 통해 연산되어 나온다.
+        Integer[] pageList = boardService.getPageList(pageNum);
 
         //Presentation TIER 에 넘길 변수 boardList
         //Model 객체를 통해 addAttribute로 Presentation TIER에 데이터를 전달한다.
         model.addAttribute("boardList", boardList);
+        model.addAttribute("pageList" , pageList);
 
         return "board/list.html";
     }
@@ -72,6 +76,7 @@ public class BoardController {
         return "redirect:/";
     }
 
+    //게시판 검색기능
     @GetMapping("/board/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model){
         List<BoardDto> boardDtoList = boardService.searchPosts(keyword);
@@ -80,5 +85,8 @@ public class BoardController {
 
         return "board/list.html";
     }
+
+
+
 
 }
