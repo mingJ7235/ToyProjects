@@ -11,4 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class ValidDto {
     private Long id;
+
+
+    private String nickname;
 }

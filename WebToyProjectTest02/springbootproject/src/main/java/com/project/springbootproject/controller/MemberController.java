@@ -4,8 +4,13 @@ import com.project.springbootproject.dto.MemberDto;
 import com.project.springbootproject.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -23,12 +28,25 @@ public class MemberController {
     //회원가입
     @GetMapping("/user/signup")
     public String dispSignup () {
+        System.out.println("url요청은 가는가?");
         return "member/signup";
     }
 
     //회원가입 로직 처리
     @PostMapping("/user/signup")
-    public String execSignup (MemberDto memberDto) {
+    public String execSignup (@Valid MemberDto memberDto, Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            //회원가입 실패시, 입력 데이터를 유지
+            model.addAttribute("memberDto", memberDto);
+            //유효성 통과 못한 필드와 메시지 핸들링
+            Map<String, String> validatorResult = memberService.validateHandling(errors);
+
+            for(String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "member/signup";
+        }
+        //에러가 아니라면
         memberService.joinUser(memberDto);
         return "redirect:/user/login";
     }
