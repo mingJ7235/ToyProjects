@@ -3,9 +3,11 @@ package com.project.springbootproject.service;
 import com.project.springbootproject.domain.entity.BoardEntity;
 import com.project.springbootproject.dto.BoardDto;
 import com.project.springbootproject.repository.BoardRepository;
+import jdk.nashorn.internal.runtime.regexp.joni.ast.BackRefNode;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,4 +69,33 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
+    // keyword 받아서 게시판 검색 => search
+    @Transactional
+    public List<BoardDto> searchPosts (String keyword) {
+        //findByWriterContaining을 쓴 이유는 작성자에서 검색하기위함이다. 이걸활용해볼것
+        //List<BoardEntity> boardEntities = boardRepository.findByWriterContaining(keyword);
+        List<BoardEntity> boardEntities = boardRepository.findByTitleContaining(keyword);
+        List<BoardDto> boardDtoList = new ArrayList<>();
+
+        //검색결과가 없을 경우
+        if(boardEntities.isEmpty()) {
+            return boardDtoList;
+        }
+
+        //검색결과가 있을 경우 for문 돌려서 entity에 담고, 이걸 다시 list에 담는다.
+        for (BoardEntity boardEntity : boardEntities) {
+            boardDtoList.add(this.convertEntityToDto(boardEntity));
+        }
+        return boardDtoList;
+    }
+
+    private BoardDto convertEntityToDto (BoardEntity boardEntity) {
+        return BoardDto.builder()
+                .id(boardEntity.getId())
+                .title(boardEntity.getTitle())
+                .content(boardEntity.getContent())
+                .writer(boardEntity.getWriter())
+                .createdDate(boardEntity.getCreatedDate())
+                .build();
+    }
 }

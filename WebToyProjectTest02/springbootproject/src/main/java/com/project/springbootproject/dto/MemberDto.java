@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class MemberDto {
     private Long id;
 
+    //build.gradle에 springboot starter 의존성에 validation을 추가해줘야한다.
     @NotBlank(message = "이메일은 필수 입력값입니다.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;

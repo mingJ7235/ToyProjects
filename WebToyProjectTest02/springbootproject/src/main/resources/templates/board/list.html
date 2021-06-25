@@ -41,6 +41,16 @@
         </tbody>
     </table>
 
+<!--    검색 form-->
+    <form action="/board/search" method="get">
+        <div>
+<!--            컨트롤러로 param으로 keyword를 보낼것임. get방식이므로 param에 담겨져서 날아감-->
+            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+        </div>
+
+        <button>검색하기</button>
+    </form>
+
 <!--FOOTER-->
     <div th:insert="common/footer.html" id="footer"></div>
 </body>
