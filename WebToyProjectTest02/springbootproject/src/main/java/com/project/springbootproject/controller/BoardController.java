@@ -65,6 +65,8 @@ public class BoardController {
     //게시판 수정 기능
     @PutMapping("/post/edit/{no}")
     public String update(BoardDto boardDto) {
+        //수정 메소드 확인용 (변경된 content가 담겨서 넘어오는지)
+        System.out.println(boardDto.getContent()); //확인 . 데이터는 넘어감 즉, content값이 수정되엇음
         boardService.savePost(boardDto);
 
         return "redirect:/board";
