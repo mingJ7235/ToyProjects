@@ -19,7 +19,7 @@ public class BoardDto {
     private LocalDateTime modifiedDate;
 
     public BoardEntity toEntity() {
-        System.out.println("toEntity로 넘어온 content : "+content); //확인완료 수정된 데이터 넘어옴
+        //System.out.println("toEntity로 넘어온 content : "+content); //확인완료 수정된 데이터 넘어옴
         BoardEntity boardEntity = BoardEntity.builder()
                 .id(id)
                 .writer(writer)

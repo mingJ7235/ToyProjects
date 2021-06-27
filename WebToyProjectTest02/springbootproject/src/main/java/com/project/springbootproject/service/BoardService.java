@@ -71,6 +71,7 @@ public class BoardService {
 
     @Transactional
     public Long getBoardCount() {
+        System.out.println("게시판 갯수 (getBoardCount()의 리턴값) :" + boardRepository.count());
         return  boardRepository.count();
     }
 
