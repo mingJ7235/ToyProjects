@@ -115,7 +115,7 @@ public class BoardService {
         BoardDto boardDto = BoardDto.builder()
                 .id(boardEntity.getId())
                 .title(boardEntity.getTitle())
-                .content(boardEntity.getTitle())
+                .content(boardEntity.getContent())
                 .writer(boardEntity.getWriter())
                 .createdDate(boardEntity.getCreatedDate())
                 .build();
