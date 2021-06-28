@@ -2,6 +2,7 @@ package com.project.springbootproject.controller;
 
 import com.project.springbootproject.dto.BoardDto;
 import com.project.springbootproject.service.BoardService;
+import com.project.springbootproject.service.S3Service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,9 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class BoardController {
+    private S3Service s3Service;
     private BoardService boardService;
+
 
     //게시판 목록 (게시판메인)
     @GetMapping("/board")

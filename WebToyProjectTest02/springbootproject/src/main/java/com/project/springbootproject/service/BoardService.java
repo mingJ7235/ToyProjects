@@ -2,7 +2,9 @@ package com.project.springbootproject.service;
 
 import com.project.springbootproject.domain.entity.BoardEntity;
 import com.project.springbootproject.dto.BoardDto;
+import com.project.springbootproject.dto.GalleryDto;
 import com.project.springbootproject.repository.BoardRepository;
+import com.project.springbootproject.repository.GalleryRepository;
 import jdk.nashorn.internal.runtime.regexp.joni.ast.BackRefNode;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,7 @@ public class BoardService {
     private static final int PAGE_POST_COUNT = 4; //한 페이지에 존재하여 볼수 있는 게시글 수
 
     private BoardRepository boardRepository;
+    private GalleryRepository galleryRepository;
 
     //게시판 등록하기 (수정하기도 마찬가지로 savePost를 사용한다.
     //save()메소드는 UPDATE, INSERT 둘다 사용가능하다.
@@ -156,6 +159,14 @@ public class BoardService {
                 .createdDate(boardEntity.getCreatedDate())
                 .build();
     }
+
+    //첨부파일 부분
+    public void savePost(GalleryDto galleryDto) {
+        galleryRepository.save(galleryDto.toEntity());
+    }
+
+
+
 
 
 

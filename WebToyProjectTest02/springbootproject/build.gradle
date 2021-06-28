@@ -31,7 +31,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	//AWS S3
-	compile group : 'org.springframework.cloud', name: 'spring-cloud-aws', version:'2.2.1.RELEASE', ext:'pom'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '2.2.1.RELEASE'
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
