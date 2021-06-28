@@ -1,10 +1,15 @@
 package com.project.springbootproject.controller;
 
+import com.project.springbootproject.dto.GalleryDto;
 import com.project.springbootproject.service.FileService;
 import com.project.springbootproject.service.S3Service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @AllArgsConstructor
@@ -16,6 +21,15 @@ public class FileController {
     public String dispFile () {
 
         return "board/gallery";
+    }
+
+    @PostMapping("/gallery")
+    public String execFile (GalleryDto galleryDto, MultipartFile file) throws IOException {
+        String attachedFile = s3Service.upload(file);
+        galleryDto.setFilePath(attachedFile);
+
+        fileService.savePost(galleryDto);
+        return "redirect:/gallery";
     }
 
 }
