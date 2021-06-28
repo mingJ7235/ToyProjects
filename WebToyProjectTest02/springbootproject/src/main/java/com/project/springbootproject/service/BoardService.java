@@ -160,14 +160,4 @@ public class BoardService {
                 .build();
     }
 
-    //첨부파일 부분
-    public void savePost(GalleryDto galleryDto) {
-        galleryRepository.save(galleryDto.toEntity());
-    }
-
-
-
-
-
-
 }

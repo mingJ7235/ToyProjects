@@ -1,19 +1,22 @@
 package com.project.springbootproject.controller;
 
 import com.project.springbootproject.dto.BoardDto;
+import com.project.springbootproject.dto.GalleryDto;
 import com.project.springbootproject.service.BoardService;
 import com.project.springbootproject.service.S3Service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class BoardController {
-    private S3Service s3Service;
+    //private S3Service s3Service;
     private BoardService boardService;
 
 
@@ -30,13 +33,13 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("pageList" , pageList);
 
-        return "board/list.html";
+        return "board/list";
     }
 
     //글쓰기 페이지 이동
     @GetMapping ("/post")
     public String write () {
-        return "board/write.html";
+        return "board/write";
     }
 
     //글쓰기 기능
@@ -54,7 +57,7 @@ public class BoardController {
     public String detail(@PathVariable("no") Long no, Model model){
         BoardDto boardDto = boardService.getPost(no);
         model.addAttribute("boardDto", boardDto);
-        return "board/detail.html";
+        return "board/detail";
     }
 
     //게시판 수정 페이지 이동
@@ -62,7 +65,7 @@ public class BoardController {
     public String edit (@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getPost(no);
         model.addAttribute("boardDto", boardDto);
-        return "board/update.html";
+        return "board/update";
     }
 
     //게시판 수정 기능
@@ -90,10 +93,8 @@ public class BoardController {
 
         model.addAttribute("boardList", boardDtoList);
 
-        return "board/list.html";
+        return "board/list";
     }
-
-
 
 
 }
