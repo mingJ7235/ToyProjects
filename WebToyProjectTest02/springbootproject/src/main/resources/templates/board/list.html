@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/board.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
 <!--    HEADER -->
+<div class="card-panel teal lighten-2">
     <div th:insert="common/header.html" id="header"></div>
 
     <a th:href="@{/post}"> 글쓰기 </a>
@@ -62,5 +64,7 @@
 
 <!--FOOTER-->
     <div th:insert="common/footer.html" id="footer"></div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
