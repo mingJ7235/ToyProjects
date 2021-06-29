@@ -19,8 +19,6 @@
     <div th:each="gallery : ${galleryList}">
         <div style="margin-bottom: 30px">
             <p th:inline="text">01 제목 : [[${gallery.title}]]</p>
-            <p th:text="${gallery.title}">
-            <p th:text="03 제목 : ${gallery.title}">
 
             <img th:src="${gallery.imgFullPath}" style="width:500px; height:300px;" >
         </div>
