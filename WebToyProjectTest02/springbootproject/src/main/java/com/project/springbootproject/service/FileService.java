@@ -16,9 +16,14 @@ public class FileService {
 
     public List<GalleryDto> getList () {
         List<GalleryEntity> galleryEntityList = galleryRepository.findAll();
+        List<GalleryEntity> galleryEntityReverseList = new ArrayList<>();
         List<GalleryDto> galleryDtoList = new ArrayList<>();
 
-        for (GalleryEntity galleryEntity : galleryEntityList) {
+        for (int i = 0; i < galleryEntityList.size(); i ++ ) {
+            galleryEntityReverseList.add(galleryEntityList.get(galleryEntityList.size()-(i+1)));
+        }
+
+        for (GalleryEntity galleryEntity : galleryEntityReverseList) {
             galleryDtoList.add(convertEntityToDto(galleryEntity));
         }
         return galleryDtoList;

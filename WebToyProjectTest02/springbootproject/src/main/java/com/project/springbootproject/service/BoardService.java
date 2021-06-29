@@ -44,9 +44,16 @@ public class BoardService {
                         "createdDate")));
 
         List<BoardEntity> boardEntities = page.getContent();
+        List<BoardEntity> boardReverseEntities = new ArrayList<>();
         List<BoardDto> boardDtoList = new ArrayList<>();
 
-        for (BoardEntity boardEntity : boardEntities) {
+        System.out.println("page.getSize() : " + page.getSize());
+
+        for(int i = 0; i < page.getSize(); i++) {
+            boardReverseEntities.add(page.getContent().get(page.getSize()-(i+1)));
+        }
+
+        for (BoardEntity boardEntity : boardReverseEntities) {
             boardDtoList.add(this.convertEntityToDto(boardEntity));
         }
         return boardDtoList;
