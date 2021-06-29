@@ -32,12 +32,6 @@ public class BoardService {
     //save()메소드는 UPDATE, INSERT 둘다 사용가능하다.
     @Transactional
     public Long savePost (BoardDto boardDto) {
-        //System.out.println("서비스 content부분: " + boardDto.getContent()); //확인완료 잘넘어옴
-        //System.out.println("service 테스트 (getID)"+boardRepository.save(boardDto.toEntity()).getId());
-        //System.out.println("service 테스트 (getContent)"+boardRepository.save(boardDto.toEntity()).getContent());
-
-        //System.out.println("boardRespository.save(boardDto.toEntity() : " + boardRepository.save(boardDto.toEntity()));
-                //주소값이 찍힘
         return boardRepository.save(boardDto.toEntity()).getId();
     }
 
@@ -49,26 +43,12 @@ public class BoardService {
                 Sort.by(Sort.Direction.ASC,
                         "createdDate")));
 
-//      List<BoardEntity> boardEntities = boardRepository.findAll();
         List<BoardEntity> boardEntities = page.getContent();
         List<BoardDto> boardDtoList = new ArrayList<>();
 
         for (BoardEntity boardEntity : boardEntities) {
             boardDtoList.add(this.convertEntityToDto(boardEntity));
         }
-
-//        for (BoardEntity boardEntity : boardEntities) {
-//            BoardDto boardDto = BoardDto.builder()
-//                    .id(boardEntity.getId())
-//                    .title(boardEntity.getTitle())
-//                    .content(boardEntity.getContent())
-//                    .writer(boardEntity.getWriter())
-//                    .createdDate(boardEntity.getCreatedDate())
-//                    .build();
-//
-//            boardDtoList.add(boardDto);
-//        }
-
         return boardDtoList;
     }
 
