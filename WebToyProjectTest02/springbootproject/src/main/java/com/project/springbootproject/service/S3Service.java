@@ -19,6 +19,11 @@ import java.io.IOException;
 @Service
 @NoArgsConstructor
 public class S3Service {
+
+    //fileService.java에서 사용될 상수임. s3Client.getUrl()에서 불러오는 것이아니라
+    //cdn 된 캐시로 접근하여 (cloudfront를 통해) 파일을 불러올것이기때문이다.
+    public static final String CLOUD_FRONT_DOMAIN_NAME = "d2zec66nj5q5ud.cloudfront.net";
+
     //build.gradle => compile에 content가 포함되어야한다.
     private AmazonS3 s3Client;
 
