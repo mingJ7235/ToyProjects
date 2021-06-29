@@ -1,4 +1,4 @@
-package com.joshua.review;
+package com.joshua.webservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
