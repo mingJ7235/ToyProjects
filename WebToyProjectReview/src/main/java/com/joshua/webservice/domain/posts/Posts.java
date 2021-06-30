@@ -34,9 +34,9 @@ public class Posts {
     //@Column 어노테이션이 없지만 기본적으로 default option으로 필드가 컬럼이 된다.
     private String author;
 
-    @Builder
     //해당 클래스의 빌더 패턴 클래스를 생성
     // 생성자 상단에 선언시 생성자에 포하묀 필드만 빌드에 포함한다.
+    @Builder
     public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
