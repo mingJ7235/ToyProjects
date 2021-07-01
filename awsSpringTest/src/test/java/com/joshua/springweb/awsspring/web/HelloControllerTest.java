@@ -1,10 +1,16 @@
 package com.joshua.springweb.awsspring.web;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+
 
 @RunWith(SpringRunner.class)
 /**
@@ -25,10 +31,18 @@ public class HelloControllerTest {
     private MockMvc mvc; //웹 API를 테스트할 때 사용한다. 스프링 MVC 테스트의 시작점이다.
                         //MockMvc 클래스를 통해 HTTP GET, POST등에 대한 API테스트를 할 수 있다.
 
+    @Test
     public void hello_가리턴된다 () throws Exception {
-        String hello;
+        String hello = "hello";
+        mvc.perform(get("/hello")) //MockMvc 를 통해서 /hello 주소로 HTTP GET요청을 한다.
+                                            //chaining이 지원되어서 아래와같이 여러 검증 기능을 선언할 수 있다.
 
-        mvc.perform(get("/hello"))
+            .andExpect(status().isOk())     // mvc.perform의 결과를 검증한다.
+                    //HTTP Header의 status를 검증하는 것이다. 즉, 200, 404, 500 등의 상태를 검증한다.
+                    //isOk() 는 OK 즉 200인지 아닌지를 검증하는 것임
+            .andExpect(content().string(hello)); //mvc.perform 의 결과를 검증한다.
+                    //응답 본문의 내용을 (content)를 검증한다.
+                    //Controller에서 "hello"를 리턴하기때문에 이 값이 맞는지를 검증한다.
     }
 
 }
