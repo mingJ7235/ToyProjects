@@ -1,0 +1,8 @@
+com/joshua/springweb/awsspring/web/dto/HelloResponseDtoTest.java
+ com.joshua.springweb.awsspring.web.dto.HelloResponseDtoTest
+com/joshua/springweb/awsspring/domain/posts/PostsRepositoryTest.java
+ com.joshua.springweb.awsspring.domain.posts.PostsRepositoryTest
+com/joshua/springweb/awsspring/web/HelloControllerTest.java
+ com.joshua.springweb.awsspring.web.HelloControllerTest
+com/joshua/springweb/awsspring/web/PostApiControllerTest.java
+ com.joshua.springweb.awsspring.web.PostApiControllerTest
