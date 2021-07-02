@@ -2,6 +2,7 @@ package com.joshua.springweb.awsspring.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class IndexController {
@@ -15,4 +16,8 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/posts/save")
+    public String postsSave () {
+        return "posts-save";
+    }
 }
