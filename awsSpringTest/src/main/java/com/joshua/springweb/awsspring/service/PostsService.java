@@ -7,6 +7,7 @@ import com.joshua.springweb.awsspring.web.dto.PostsResponseDto;
 import com.joshua.springweb.awsspring.web.dto.PostsSaveRequestDto;
 import com.joshua.springweb.awsspring.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +47,11 @@ public class PostsService {
                 //.map(posts -> new PostsListResponseDto(posts))
                 //postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto 변환 -> List로 반환하는 메소드
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public String totalNum () {
+        return postsRepository.totalNum();
     }
 
 }

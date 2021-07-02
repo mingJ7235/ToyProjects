@@ -4,6 +4,10 @@ var index = {
         $('#btn-save').on('click', function () {
             _this.savePost();
         });
+        
+        $('#btn-update').on('click', function(){
+            _this.updatePost();
+        })
     },
     savePost : function () {
         var data = {
@@ -27,6 +31,12 @@ var index = {
             alert(JSON.stringify(error));
         });
 
+    };
+
+    updatePost : function () {
+        var data = {
+
+        }
     }
 };
 

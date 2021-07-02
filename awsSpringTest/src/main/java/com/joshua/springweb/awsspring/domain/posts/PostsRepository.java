@@ -23,4 +23,7 @@ public interface PostsRepository extends JpaRepository <Posts, Long> {
      *
      * Querydsl이 국내에서는 대세다.
      */
+
+    @Query ("SELECT COUNT(*) FROM Posts")
+    String totalNum();
 }
