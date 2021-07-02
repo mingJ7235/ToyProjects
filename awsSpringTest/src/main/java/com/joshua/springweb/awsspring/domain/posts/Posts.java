@@ -27,6 +27,7 @@ public class Posts extends BaseTimeEntity {
 
     private String author;
 
+    //업데이트를 하기위함 -> update메소드를 통해 정보를 수정한다.
     public void update (String title, String content) {
         this.title = title;
         this.content = content;
