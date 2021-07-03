@@ -22,6 +22,7 @@ public class PostsApiController {
     //글 수정
     @PutMapping("/api/vi/posts/{id}")
     public Long update (@PathVariable long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        System.out.println("requestDto from putmapping (update)"+requestDto);
         return postsService.update (id, requestDto);
     }
 
