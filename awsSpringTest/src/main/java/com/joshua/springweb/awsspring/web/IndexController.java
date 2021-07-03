@@ -1,17 +1,22 @@
 package com.joshua.springweb.awsspring.web;
 
-import com.joshua.springweb.awsspring.domain.posts.PostsRepository;
 import com.joshua.springweb.awsspring.service.PostsService;
 import com.joshua.springweb.awsspring.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
+
+/**
+ * IndexController는 GetMapping 즉, 화면 전환에 대한 컨트롤러를 달아 놓았다.
+ * API와 Presentation Tier에 대한 분리를 해놓는것이 좋아 보인다.
+ * Dto를 통해 Model객체에 데이터를 전달하거나,
+ * Service를 통해 Model객체에 담아 정보를 Presentation Tier에 담아준다.
+ */
 public class IndexController {
 
     private final PostsService postsService;
