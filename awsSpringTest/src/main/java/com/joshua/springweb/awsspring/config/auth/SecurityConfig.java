@@ -24,11 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         //authorizeRequests가 선언되어야만, antMachers옵션을 사용가능하다.
 
                     .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
-                    .antMatchers("api/v1/**").hasRole(Role.USER.name())
+                    .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                         //antMatchers : 권한 관리 대상을 지정하는 옵션이다.
                         //URL, HTTP메소드 별로 관리가 가능하다.
                         //"/"등 첫번째 antMatchers의 URL들은 permitAll()옵션을 통해 전체 열람 권한을 주었다.
-                        //POST 메소드 이면서 "api/v1/**" 주소를 가진 API는 USER 권한을 가진 사람만 가능하도록 설정함.
+                        //POST 메소드 이면서 "/api/v1/**" 주소를 가진 API는 USER 권한을 가진 사람만 가능하도록 설정함.
 
                     .anyRequest().authenticated()
                         //anyRequest : 설정된 값들 이외의 나머지 URL들을 나타낸다.
