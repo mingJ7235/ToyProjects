@@ -1,5 +1,7 @@
 package com.joshua.springweb.awsspring.web;
 
+import com.joshua.springweb.awsspring.config.auth.dto.SessionUser;
+import com.joshua.springweb.awsspring.domain.user.User;
 import com.joshua.springweb.awsspring.service.PostsService;
 import com.joshua.springweb.awsspring.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     //머스테치 스타터 덕분에 컨트롤러에서 문자열을 반환할 시, 앞에 경로와 뒤의 파일 확장자는 자동으로 지정된다.
     //앞의 경로 : src/main/resources/templates
@@ -29,6 +34,15 @@ public class IndexController {
     public String index (Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
         model.addAttribute("nums", postsService.totalNum());
+
+        //userName을 사용할 수 있게 model에 담아서 보낸다.
+
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 
