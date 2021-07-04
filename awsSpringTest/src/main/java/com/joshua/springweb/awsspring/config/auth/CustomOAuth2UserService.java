@@ -1,5 +1,7 @@
 package com.joshua.springweb.awsspring.config.auth;
 
+import com.joshua.springweb.awsspring.config.auth.dto.OAuthAttributes;
+import com.joshua.springweb.awsspring.config.auth.dto.SessionUser;
 import com.joshua.springweb.awsspring.domain.user.User;
 import com.joshua.springweb.awsspring.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -48,13 +50,21 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         User user = saveOrUpdate(attributes);
 
         httpSession.setAttribute("user", new SessionUser(user));
-                //SessionUser
+                //SessionUser : 세션에 사용자 정보를 저장하기 위한 Dto 클래스다.
+                //
+        /** 왜 User 클래스를 쓰지않고, 새로 만들어서 쓰는가!?
+         * 세션에 저장하기위해 User 클래스를 세션에 저장하려고 하니, User클래스에 직렬화를 구현하지 않았다는 에러가 뜨게된다.
+         * 그렇다고 User클래스에 직렬화 코드를 넣으면 안된다. 왜냐하면 User클래스가 엔터티 이기 때문이다.
+         * 엔터티 클래스에는 언제 다른 엔티티와 관계가 형성될지 모른다.
+         * 직렬화 기능을 가진 세션 Dto를 하나 추가로 만드는 것이 이후 운영 및 유지보수 때 많은 도움이 된다.
+         */
 
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey()))
         , attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
+    //업데이트 기능까지 넣은 것이다.
     private User saveOrUpdate (OAuthAttributes attributes) {
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
