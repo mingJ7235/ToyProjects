@@ -1,5 +1,6 @@
 package com.joshua.springweb.awsspring.web;
 
+import com.joshua.springweb.awsspring.config.auth.LoginUser;
 import com.joshua.springweb.awsspring.config.auth.dto.SessionUser;
 import com.joshua.springweb.awsspring.domain.user.User;
 import com.joshua.springweb.awsspring.service.PostsService;
@@ -31,14 +32,15 @@ public class IndexController {
     //뒤의 파일 확장자 : .mustache
     // 최종 반환 값 -> src/main/resources/templates/index.mustache -> View resolver가 처리한다.
     @GetMapping("/")
-    public String index (Model model) {
+                            //이제는 어느 컨트롤러든지 @LoginUser만 사용하면 세션정보를 가져올 수 있게 된다.
+    public String index (Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
         model.addAttribute("nums", postsService.totalNum());
 
         //Session값이 null 이아니라면 userName을 사용할 수 있게 model에 담아서 보낸다.
         //그러나 이부분은 index말고도 다른 부분에서도 반복되어서 사용되어질수 있다.
         //그래서 이 부분을 메소드 인자로 세션값을 바로 받을 수 있도록 변경해야한다.
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null) {
             model.addAttribute("userName", user.getName());
