@@ -1,0 +1,4 @@
+rootProject.name = 'UpennPractice'
+include 'UpennPractice_core'
+include 'UpennPractice_api'
+

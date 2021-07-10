@@ -1,0 +1,4 @@
+rootProject.name = 'MultiModulePractice'
+include 'practice-module1'
+include 'practice-module2'
+

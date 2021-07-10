@@ -1,0 +1,15 @@
+def resilience4jVersion = '1.4.0';
+
+dependencies {
+    compile "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    compile "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}"
+    compile "io.github.resilience4j:resilience4j-all:${resilience4jVersion}"
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
