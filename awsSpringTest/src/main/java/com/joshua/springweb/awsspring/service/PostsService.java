@@ -7,7 +7,6 @@ import com.joshua.springweb.awsspring.web.dto.PostsResponseDto;
 import com.joshua.springweb.awsspring.web.dto.PostsSaveRequestDto;
 import com.joshua.springweb.awsspring.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
