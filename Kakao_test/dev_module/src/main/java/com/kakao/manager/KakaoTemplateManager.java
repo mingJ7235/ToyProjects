@@ -40,7 +40,7 @@ public class KakaoTemplateManager {
 
     public void deleteTemplate (Long templateId) {
         KakaoTemplate kakaoTemplate = findTemplate(templateId);
-//        kakaoTemplateRepository.delete(kakaoTemplate);
+        kakaoTemplateRepository.delete(kakaoTemplate);
     }
 
     private KakaoTemplate findTemplate (Long templateId) {

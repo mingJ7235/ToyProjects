@@ -12,12 +12,12 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api.tason.com/tas-api/")
+@RequestMapping("/api.tason.com/tas-api")
 public class KakaoRestController {
 
     private final ProjectKakaoService service;
 
-    @PostMapping("/kakaosend/")
+    @PostMapping("/kakaosend")
     public ReturnDto sendMessage (@ModelAttribute @Valid Long memberId, Long templateId) {
         return service.sendKakaoMessage(memberId, templateId);
     }
