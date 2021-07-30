@@ -1,7 +1,6 @@
 package com.kakao.dto;
 
-import com.kakao.domain.KakaoMessage;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.internal.EncloseType;
+import com.kakao.domain.KakaoTemplates;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,23 +8,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class KakaoMessageDto {
+public class KakaoTemplateDto {
 
     private String map_content;
     private String sender;
     private String sender_name;
     private String template_code;
 
-    public KakaoMessageDto (KakaoMessage entity) {
-        this.map_content = entity.getMapContent();
+    public KakaoTemplateDto(KakaoTemplates entity) {
+        this.map_content = entity.getContent();
         this.sender = entity.getSender();
         this.sender_name = entity.getSenderName();
         this.template_code = entity.getTemplateCode();
     }
 
-    public KakaoMessage toEntity () {
-        return  KakaoMessage.builder()
-                .mapContent(map_content)
+    public KakaoTemplates toEntity () {
+        return  KakaoTemplates.builder()
+                .content(map_content)
                 .sender(sender)
                 .senderName(sender_name)
                 .templateCode(template_code)

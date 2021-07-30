@@ -1,37 +1,36 @@
-package com.kakao.service;
+package com.kakao.manager;
 
 import com.kakao.domain.KakaoMember;
-import com.kakao.domain.KakaoMessage;
+import com.kakao.domain.KakaoTemplates;
 import com.kakao.dto.DataDto;
 import com.kakao.dto.ReturnDto;
 import com.kakao.repository.KakaoMemberRepository;
-import com.kakao.repository.KakaoMessageRepository;
+import com.kakao.repository.KakaoTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class KakaoSendService {
+public class KakaoSendManager {
     private final KakaoMemberRepository kakaoMemberRepository;
-    private final KakaoMessageRepository kakaoMessageRepository;
+    private final KakaoTemplateRepository kakaoTemplateRepository;
 
-    public ReturnDto sendMessage (Long memberId, Long messageId) {
+    public ReturnDto sendMessage (Long memberId, Long templateId) {
 
         String auth_key = "";
 
         KakaoMember member = kakaoMemberRepository.findById(memberId)
                 .orElseThrow(IllegalArgumentException::new);
-        KakaoMessage message = kakaoMessageRepository.findById(messageId)
+        KakaoTemplates message = kakaoTemplateRepository.findById(templateId)
                 .orElseThrow(IllegalArgumentException::new);
 
         DataDto dataDto = DataDto.builder()
                 .user_name(member.getUserName())
                 .user_email(member.getUserEmail())
-                .map_content(message.getMapContent())
+                .map_content(message.getContent())
                 .sender(message.getSender())
                 .sender_name(message.getSenderName())
                 .template_code(message.getTemplateCode())
@@ -43,7 +42,7 @@ public class KakaoSendService {
         ReturnDto returnDto = ReturnDto.builder()
                 .tas_id("support@spiderkim.com")
                 .send_type("KA")
-                .auth_key("auth_key")
+                .auth_key(auth_key)
                 .data(dataDtoList)
                 .build();
         return returnDto;

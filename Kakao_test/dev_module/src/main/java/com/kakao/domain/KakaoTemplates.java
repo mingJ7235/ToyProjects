@@ -14,12 +14,12 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @Entity
-public class KakaoMessage {
+public class KakaoTemplates {
 
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String mapContent;
+    private String content;
 
     private String sender; //발신자 번호
 
@@ -28,8 +28,8 @@ public class KakaoMessage {
     private String templateCode;
 
     @Builder
-    public KakaoMessage(String mapContent, String sender, String senderName, String templateCode) {
-        this.mapContent = mapContent;
+    public KakaoTemplates(String content, String sender, String senderName, String templateCode) {
+        this.content = content;
         this.sender = sender;
         this.senderName = senderName;
         this.templateCode = templateCode;

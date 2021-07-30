@@ -1,2 +1,4 @@
 rootProject.name = 'Kakao_test'
+include 'dev_module'
+include 'kakao_project_module'
 

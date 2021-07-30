@@ -18,7 +18,7 @@ public class DataDto {
     private String sender_name;
     private String template_code;
 
-    public DataDto (KakaoMemberDto memberDto, KakaoMessageDto messageDto) {
+    public DataDto (KakaoMemberDto memberDto, KakaoTemplateDto messageDto) {
         this.user_name = memberDto.getUser_name();
         this.user_email = memberDto.getUser_email();
         this.map_content = messageDto.getMap_content();
