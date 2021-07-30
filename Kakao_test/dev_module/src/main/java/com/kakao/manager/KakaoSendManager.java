@@ -1,5 +1,7 @@
 package com.kakao.manager;
 
+import com.kakao.dto.KakaoMemberDto;
+import com.kakao.dto.KakaoTemplateDto;
 import com.kakao.model.KakaoMember;
 import com.kakao.model.KakaoTemplate;
 import com.kakao.dto.DataDto;
@@ -30,10 +32,8 @@ public class KakaoSendManager {
                 .orElseThrow(IllegalArgumentException::new);
 
         DataDto dataDto = DataDto.builder()
-                .user_name(member.getUserName())
-                .user_email(member.getUserEmail())
-                .map_content(template.getContent())
-                .template_code(template.getTemplateCode())
+                .memberDto(new KakaoMemberDto(member))
+                .templateDto(new KakaoTemplateDto(template))
                 .build();
 
         dataDto.setSender(sender);

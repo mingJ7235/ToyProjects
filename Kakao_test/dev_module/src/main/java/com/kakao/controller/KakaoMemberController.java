@@ -17,6 +17,7 @@ public class KakaoMemberController {
 
     @PostMapping ("kakao/test/members")
     public Long saveMember (@ModelAttribute @Valid KakaoMemberDto kakaoMemberDto) {
-        return kakaoMemberService.saveMember(kakaoMemberDto);
+        Long saveMember = kakaoMemberService.saveMember(kakaoMemberDto);
+        return saveMember;
     }
 }

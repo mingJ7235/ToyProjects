@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Builder
 public class DataDto {
 
     private String user_name;
@@ -18,11 +17,12 @@ public class DataDto {
     private String sender_name;
     private String template_code;
 
-    public DataDto (KakaoMemberDto memberDto, KakaoTemplateDto messageDto) {
+    @Builder
+    public DataDto (KakaoMemberDto memberDto, KakaoTemplateDto templateDto) {
         this.user_name = memberDto.getUser_name();
         this.user_email = memberDto.getUser_email();
-        this.map_content = messageDto.getMap_content();
-        this.template_code = messageDto.getTemplate_code();
+        this.map_content = templateDto.getMap_content();
+        this.template_code = templateDto.getTemplate_code();
     }
 
 

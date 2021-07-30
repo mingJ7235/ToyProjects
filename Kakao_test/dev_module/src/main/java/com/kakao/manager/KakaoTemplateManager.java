@@ -1,5 +1,6 @@
 package com.kakao.manager;
 
+import com.kakao.dto.ReturnDto;
 import com.kakao.model.KakaoTemplate;
 import com.kakao.dto.KakaoTemplateDto;
 import com.kakao.repository.KakaoTemplateRepository;
@@ -28,6 +29,7 @@ public class KakaoTemplateManager {
         List<KakaoTemplate> templateList = kakaoTemplateRepository.findAll();
         return templateList;
     }
+
 
     public Long updateTemplate (Long templateId, KakaoTemplateDto templateDto) {
         KakaoTemplate kakaoTemplate = findTemplate(templateId);
