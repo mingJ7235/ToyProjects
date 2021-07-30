@@ -1,5 +1,6 @@
 package com.kakao.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,5 +20,9 @@ public class KakaoMember {
 
     private String userEmail; //수신자 번호 (국가번호 + 핸드폰번호)
 
-
+    @Builder
+    public KakaoMember(String userName, String userEmail) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+    }
 }
