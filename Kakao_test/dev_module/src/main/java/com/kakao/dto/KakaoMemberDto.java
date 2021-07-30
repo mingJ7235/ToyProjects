@@ -1,6 +1,6 @@
 package com.kakao.dto;
 
-import com.kakao.domain.KakaoMember;
+import com.kakao.model.KakaoMember;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

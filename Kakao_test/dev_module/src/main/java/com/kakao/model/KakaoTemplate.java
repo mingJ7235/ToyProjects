@@ -1,4 +1,4 @@
-package com.kakao.domain;
+package com.kakao.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @Entity
-public class KakaoTemplates {
+public class KakaoTemplate {
 
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +24,7 @@ public class KakaoTemplates {
     private String templateCode;
 
     @Builder
-    public KakaoTemplates(String content, String templateCode) {
+    public KakaoTemplate(String content, String templateCode) {
         this.content = content;
         this.templateCode = templateCode;
     }

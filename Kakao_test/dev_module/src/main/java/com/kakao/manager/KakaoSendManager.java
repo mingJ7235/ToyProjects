@@ -1,7 +1,7 @@
 package com.kakao.manager;
 
-import com.kakao.domain.KakaoMember;
-import com.kakao.domain.KakaoTemplates;
+import com.kakao.model.KakaoMember;
+import com.kakao.model.KakaoTemplate;
 import com.kakao.dto.DataDto;
 import com.kakao.dto.ReturnDto;
 import com.kakao.repository.KakaoMemberRepository;
@@ -26,7 +26,7 @@ public class KakaoSendManager {
 
         KakaoMember member = kakaoMemberRepository.findById(memberId)
                 .orElseThrow(IllegalArgumentException::new);
-        KakaoTemplates template = kakaoTemplateRepository.findById(templateId)
+        KakaoTemplate template = kakaoTemplateRepository.findById(templateId)
                 .orElseThrow(IllegalArgumentException::new);
 
         DataDto dataDto = DataDto.builder()

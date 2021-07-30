@@ -1,6 +1,6 @@
 package com.kakao.service;
 
-import com.kakao.domain.KakaoMember;
+import com.kakao.model.KakaoMember;
 import com.kakao.dto.KakaoMemberDto;
 import com.kakao.repository.KakaoMemberRepository;
 import lombok.RequiredArgsConstructor;

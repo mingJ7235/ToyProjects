@@ -1,4 +1,4 @@
-package com.kakao.domain;
+package com.kakao.model;
 
 import lombok.Builder;
 import lombok.Getter;
