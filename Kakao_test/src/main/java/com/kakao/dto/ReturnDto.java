@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter
@@ -15,6 +14,6 @@ public class ReturnDto {
     private String tas_id;
     private String send_type;
     private String auth_key;
-    private ReturnDto[] data;
+    private List<DataDto> data;
 
 }
