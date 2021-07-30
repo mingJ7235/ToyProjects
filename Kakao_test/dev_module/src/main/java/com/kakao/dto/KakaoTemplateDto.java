@@ -11,22 +11,16 @@ import lombok.Setter;
 public class KakaoTemplateDto {
 
     private String map_content;
-    private String sender;
-    private String sender_name;
     private String template_code;
 
     public KakaoTemplateDto(KakaoTemplates entity) {
         this.map_content = entity.getContent();
-        this.sender = entity.getSender();
-        this.sender_name = entity.getSenderName();
         this.template_code = entity.getTemplateCode();
     }
 
     public KakaoTemplates toEntity () {
         return  KakaoTemplates.builder()
                 .content(map_content)
-                .sender(sender)
-                .senderName(sender_name)
                 .templateCode(template_code)
                 .build();
     }

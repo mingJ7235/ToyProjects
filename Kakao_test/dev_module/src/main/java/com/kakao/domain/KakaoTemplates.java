@@ -21,17 +21,11 @@ public class KakaoTemplates {
 
     private String content;
 
-    private String sender; //발신자 번호
-
-    private String senderName; //발신자명
-
     private String templateCode;
 
     @Builder
-    public KakaoTemplates(String content, String sender, String senderName, String templateCode) {
+    public KakaoTemplates(String content, String templateCode) {
         this.content = content;
-        this.sender = sender;
-        this.senderName = senderName;
         this.templateCode = templateCode;
     }
 }

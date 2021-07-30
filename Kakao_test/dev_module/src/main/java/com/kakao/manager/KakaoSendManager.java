@@ -21,20 +21,23 @@ public class KakaoSendManager {
     public ReturnDto sendMessage (Long memberId, Long templateId) {
 
         String auth_key = "";
+        String sender = "";
+        String sender_name = "";
 
         KakaoMember member = kakaoMemberRepository.findById(memberId)
                 .orElseThrow(IllegalArgumentException::new);
-        KakaoTemplates message = kakaoTemplateRepository.findById(templateId)
+        KakaoTemplates template = kakaoTemplateRepository.findById(templateId)
                 .orElseThrow(IllegalArgumentException::new);
 
         DataDto dataDto = DataDto.builder()
                 .user_name(member.getUserName())
                 .user_email(member.getUserEmail())
-                .map_content(message.getContent())
-                .sender(message.getSender())
-                .sender_name(message.getSenderName())
-                .template_code(message.getTemplateCode())
+                .map_content(template.getContent())
+                .template_code(template.getTemplateCode())
                 .build();
+
+        dataDto.setSender(sender);
+        dataDto.setSender_name(sender_name);
 
         List<DataDto> dataDtoList = new ArrayList<>();
         dataDtoList.add(dataDto);

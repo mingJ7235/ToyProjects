@@ -1,4 +1,4 @@
-package com.kakao.service;
+package com.kakao.manager;
 
 import com.kakao.domain.KakaoTemplates;
 import com.kakao.dto.KakaoTemplateDto;
@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class KakaoTemplateService {
+public class KakaoTemplateManager {
 
     private final KakaoTemplateRepository kakaoTemplateRepository;
 
-    public Long saveMessage (KakaoTemplateDto messageDto) {
-        KakaoTemplates kakaoTemplates = messageDto.toEntity();
-        Long savedMessageId = kakaoTemplateRepository.save(kakaoTemplates).getId();
-        return savedMessageId;
+    public Long saveTemplate(KakaoTemplateDto templateDto) {
+        KakaoTemplates kakaoTemplates = templateDto.toEntity();
+        Long savedTemplateId = kakaoTemplateRepository.save(kakaoTemplates).getId();
+        return savedTemplateId;
     }
 }

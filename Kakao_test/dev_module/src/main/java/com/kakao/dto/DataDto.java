@@ -22,8 +22,6 @@ public class DataDto {
         this.user_name = memberDto.getUser_name();
         this.user_email = memberDto.getUser_email();
         this.map_content = messageDto.getMap_content();
-        this.sender = messageDto.getSender();
-        this.sender_name = messageDto.getSender_name();
         this.template_code = messageDto.getTemplate_code();
     }
 
