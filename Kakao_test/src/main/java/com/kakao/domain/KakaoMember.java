@@ -15,4 +15,9 @@ public class KakaoMember {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String userName;
+
+    private String userEmail; //수신자 번호 (국가번호 + 핸드폰번호)
+
+
 }
