@@ -6,7 +6,6 @@ import com.joshua.springweb.awsspring.web.dto.PostsSaveRequestDto;
 import com.joshua.springweb.awsspring.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import sun.net.www.http.PosterOutputStream;
 
 @RequiredArgsConstructor
 @RestController
