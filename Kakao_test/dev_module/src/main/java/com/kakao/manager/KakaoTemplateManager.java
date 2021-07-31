@@ -13,6 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KakaoTemplateManager {
 
+    //템플릿들의 매개변수 관리는??
+
+    //관리할 수 있는 api도 개발하면 좋을것같다.
+
+    //specification 을 통해 검색기능 -> 관리자 입장에서 템플릿 관리를 위한 검색 기능
+
     private final KakaoTemplateRepository kakaoTemplateRepository;
 
     public Long saveTemplate(KakaoTemplateDto templateDto) {
