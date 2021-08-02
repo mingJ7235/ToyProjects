@@ -1,16 +1,9 @@
 package com.kakao.manager;
 
-import com.kakao.dto.KakaoMemberDto;
-import com.kakao.dto.KakaoTemplateDto;
-import com.kakao.model.KakaoMember;
-import com.kakao.model.KakaoTemplate;
 import com.kakao.dto.DataDto;
 import com.kakao.dto.ReturnDto;
-import com.kakao.provider.DataProvider;
 import com.kakao.provider.ExpiredNotification;
 import com.kakao.provider.SucceedPaymentNotification;
-import com.kakao.repository.KakaoMemberRepository;
-import com.kakao.repository.KakaoTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +29,7 @@ public class KakaoSendManager {
             case "code1" :
                 dataDto = expiredNotification.getDataDto(memberId, templateCode);
                 break;
-            case "code2":
+            case "code2" :
                 dataDto = succeedPaymentNotification.getDataDto(memberId, templateCode);
                 break;
             default:
