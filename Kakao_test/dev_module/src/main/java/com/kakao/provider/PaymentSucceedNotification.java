@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SucceedPaymentNotification implements DataProvider{
+public class PaymentSucceedNotification implements DataProvider{
 
     private final KakaoMemberRepository memberRepository;
 

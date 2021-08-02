@@ -3,7 +3,7 @@ package com.kakao.manager;
 import com.kakao.dto.DataDto;
 import com.kakao.dto.ReturnDto;
 import com.kakao.provider.ExpiredNotification;
-import com.kakao.provider.SucceedPaymentNotification;
+import com.kakao.provider.PaymentSucceedNotification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class KakaoSendManager {
-    private final SucceedPaymentNotification succeedPaymentNotification;
+    private final PaymentSucceedNotification paymentSucceedNotification;
     private final ExpiredNotification expiredNotification;
 
     public ReturnDto sendMessage (Long memberId, String templateCode) {
@@ -30,7 +30,7 @@ public class KakaoSendManager {
                 dataDto = expiredNotification.getDataDto(memberId, templateCode);
                 break;
             case "code2" :
-                dataDto = succeedPaymentNotification.getDataDto(memberId, templateCode);
+                dataDto = paymentSucceedNotification.getDataDto(memberId, templateCode);
                 break;
             default:
                 throw new RuntimeException("알맞는 템플릿이 아닙니다.");
