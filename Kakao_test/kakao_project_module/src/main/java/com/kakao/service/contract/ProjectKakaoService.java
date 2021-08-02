@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProjectKakaoService {
 
     //send message
-    ReturnDto sendKakaoMessage (Long memberId, Long templateId);
+    ReturnDto sendKakaoMessage (Long memberId, int templateId);
 
     //manage templates
 

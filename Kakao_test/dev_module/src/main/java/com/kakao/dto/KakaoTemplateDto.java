@@ -10,18 +10,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class KakaoTemplateDto {
 
-    private String map_content;
-    private String template_code;
+    private String content;
+    private String templateCode;
 
     public KakaoTemplateDto(KakaoTemplate entity) {
-        this.map_content = entity.getContent();
-        this.template_code = entity.getTemplateCode();
+        this.content = entity.getContent();
+        this.templateCode = entity.getTemplateCode();
     }
 
     public KakaoTemplate toEntity () {
         return  KakaoTemplate.builder()
-                .content(map_content)
-                .templateCode(template_code)
+                .content(content)
+                .templateCode(templateCode)
                 .build();
     }
 

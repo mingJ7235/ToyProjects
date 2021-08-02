@@ -6,6 +6,9 @@ import com.kakao.model.KakaoMember;
 import com.kakao.model.KakaoTemplate;
 import com.kakao.dto.DataDto;
 import com.kakao.dto.ReturnDto;
+import com.kakao.provider.DataProvider;
+import com.kakao.provider.ExpiredNotification;
+import com.kakao.provider.SucceedPaymentNotification;
 import com.kakao.repository.KakaoMemberRepository;
 import com.kakao.repository.KakaoTemplateRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,24 +20,28 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class KakaoSendManager {
-    private final KakaoMemberRepository kakaoMemberRepository;
-    private final KakaoTemplateRepository kakaoTemplateRepository;
+    private final SucceedPaymentNotification succeedPaymentNotification;
+    private final ExpiredNotification expiredNotification;
 
-    public ReturnDto sendMessage (Long memberId, Long templateId) {
+    public ReturnDto sendMessage (Long memberId, int templateId) {
 
         String auth_key = "";
         String sender = "";
         String sender_name = "";
 
-        KakaoMember member = kakaoMemberRepository.findById(memberId)
-                .orElseThrow(IllegalArgumentException::new);
-        KakaoTemplate template = kakaoTemplateRepository.findById(templateId)
-                .orElseThrow(IllegalArgumentException::new);
+        DataDto dataDto = null;
 
-        DataDto dataDto = DataDto.builder()
-                .memberDto(new KakaoMemberDto(member))
-                .templateDto(new KakaoTemplateDto(template))
-                .build();
+        //알림톡 별 분기 처리
+        switch (templateId) {
+            case 1 :
+                dataDto = expiredNotification.getDataDto(memberId);
+                break;
+            case 2:
+                dataDto = succeedPaymentNotification.getDataDto(memberId);
+                break;
+            default:
+                throw new RuntimeException("알맞는 템플릿이 아닙니다.");
+        }
 
         dataDto.setSender(sender);
         dataDto.setSender_name(sender_name);

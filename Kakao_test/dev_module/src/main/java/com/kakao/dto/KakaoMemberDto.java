@@ -9,18 +9,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class KakaoMemberDto {
-    private String user_name;
-    private String user_email;
+    private String userName;
+    private String userEmail;
 
     public KakaoMemberDto (KakaoMember entity) {
-        this.user_name = entity.getUserName();
-        this.user_email = entity.getUserEmail();
+        this.userName = entity.getUserName();
+        this.userEmail = entity.getUserEmail();
     }
 
     public KakaoMember toEntity () {
         return KakaoMember.builder()
-                .userName(user_name)
-                .userEmail(user_email)
+                .userName(userName)
+                .userEmail(userEmail)
                 .build();
     }
 }
