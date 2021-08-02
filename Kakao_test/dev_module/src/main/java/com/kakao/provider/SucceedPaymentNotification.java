@@ -14,7 +14,7 @@ public class SucceedPaymentNotification implements DataProvider{
     private final KakaoMemberRepository memberRepository;
 
     @Override
-    public DataDto getDataDto(Long memberId) {
+    public DataDto getDataDto(Long memberId, String templateCode) {
 
         KakaoMember kakaoMember = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
         KakaoMemberDto memberDto = new KakaoMemberDto(kakaoMember);
@@ -29,7 +29,6 @@ public class SucceedPaymentNotification implements DataProvider{
                 "\n" +
                 "감사합니다.\n" +
                 "\n";
-        String templateCode = "";
 
         DataDto dataDto = DataDto.builder()
                 .memberDto(memberDto)

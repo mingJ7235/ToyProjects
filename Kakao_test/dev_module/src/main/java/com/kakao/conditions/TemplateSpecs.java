@@ -10,13 +10,24 @@ import javax.persistence.criteria.Root;
 
 public class TemplateSpecs {
 
-    public static Specification<KakaoTemplate> contentLike (final String keyword) {
+    public static Specification<KakaoTemplate> likeContent (final String keyword) {
         return new Specification<KakaoTemplate>() {
             @Override
             public Predicate toPredicate(Root<KakaoTemplate> root,
                                          CriteriaQuery<?> query,
                                          CriteriaBuilder cb) {
                 return cb.like(root.get("contents"),"%" + keyword + "%");
+            }
+        };
+    }
+
+    public static Specification<KakaoTemplate> equalContent (final String keyword) {
+        return new Specification<KakaoTemplate>() {
+            @Override
+            public Predicate toPredicate(Root<KakaoTemplate> root,
+                                         CriteriaQuery<?> query,
+                                         CriteriaBuilder cb) {
+                return cb.equal(root.get("content"), keyword);
             }
         };
     }

@@ -21,8 +21,8 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     private final KakaoTemplateManager kakaoTemplateManager;
 
     @Override
-    public ReturnDto sendKakaoMessage(Long memberId, int templateId) {
-        ReturnDto messageResult = kakaoSendManager.sendMessage(memberId, templateId);
+    public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {
+        ReturnDto messageResult = kakaoSendManager.sendMessage(memberId, templateCode);
         return messageResult;
     }
 

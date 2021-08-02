@@ -23,7 +23,7 @@ public class KakaoSendManager {
     private final SucceedPaymentNotification succeedPaymentNotification;
     private final ExpiredNotification expiredNotification;
 
-    public ReturnDto sendMessage (Long memberId, int templateId) {
+    public ReturnDto sendMessage (Long memberId, String templateCode) {
 
         String auth_key = "";
         String sender = "";
@@ -32,12 +32,12 @@ public class KakaoSendManager {
         DataDto dataDto = null;
 
         //알림톡 별 분기 처리
-        switch (templateId) {
-            case 1 :
-                dataDto = expiredNotification.getDataDto(memberId);
+        switch (templateCode) {
+            case "code1" :
+                dataDto = expiredNotification.getDataDto(memberId, templateCode);
                 break;
-            case 2:
-                dataDto = succeedPaymentNotification.getDataDto(memberId);
+            case "code2":
+                dataDto = succeedPaymentNotification.getDataDto(memberId, templateCode);
                 break;
             default:
                 throw new RuntimeException("알맞는 템플릿이 아닙니다.");

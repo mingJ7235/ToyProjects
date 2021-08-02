@@ -14,7 +14,7 @@ public class ExpiredNotification implements DataProvider{
     private final KakaoMemberRepository memberRepository;
 
     @Override
-    public DataDto getDataDto(Long memberId) {
+    public DataDto getDataDto(Long memberId, String templateCode) {
 
         KakaoMember kakaoMember = memberRepository.findById(memberId)
                 .orElseThrow(IllegalArgumentException::new);
@@ -28,7 +28,6 @@ public class ExpiredNotification implements DataProvider{
                 "\n" +
                 "이용권 만료 시점에 베이직 요금제로 변경됩니다. 감사합니다.";
 
-        String templateCode = "";
 
         DataDto dataDto = DataDto.builder()
                 .memberDto(memberDto)
