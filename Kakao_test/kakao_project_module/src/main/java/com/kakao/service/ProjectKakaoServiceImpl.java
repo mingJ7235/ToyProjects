@@ -1,5 +1,6 @@
 package com.kakao.service;
 
+import com.kakao.dto.DataDto;
 import com.kakao.dto.KakaoTemplateDto;
 import com.kakao.dto.ReturnDto;
 import com.kakao.manager.KakaoSendManager;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +24,27 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
 
     @Override
     public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {
-        ReturnDto messageResult = kakaoSendManager.sendMessage(memberId, templateCode);
-        return messageResult;
+
+        String auth_key = "";
+        String sender = "";
+        String sender_name = "";
+
+        DataDto dataDto = kakaoSendManager.sendMessage()
+
+        dataDto.setSender(sender);
+        dataDto.setSender_name(sender_name);
+
+        List<DataDto> dataDtoList = new ArrayList<>();
+        dataDtoList.add(dataDto);
+
+        return ReturnDto.builder()
+                .tas_id("support@spiderkim.com")
+                .send_type("KA")
+                .auth_key(auth_key)
+                .data(dataDtoList)
+                .build();
+
+        return kakaoSendManager.sendMessage(memberId, templateCode);
     }
 
     @Override

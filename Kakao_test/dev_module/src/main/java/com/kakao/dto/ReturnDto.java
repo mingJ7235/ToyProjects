@@ -2,13 +2,14 @@ package com.kakao.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Builder
+@NoArgsConstructor
 public class ReturnDto {
 
     private String tas_id;
@@ -16,4 +17,11 @@ public class ReturnDto {
     private String auth_key;
     private List<DataDto> data;
 
+    @Builder
+    public ReturnDto(String tas_id, String send_type, String auth_key, List<DataDto> data) {
+        this.tas_id = tas_id;
+        this.send_type = send_type;
+        this.auth_key = auth_key;
+        this.data = data;
+    }
 }
