@@ -1,8 +1,9 @@
 package com.core.notification.kakao.provider;
 
 import com.core.notification.NotificationProvider;
+import com.core.notification.kakao.config.TasonKakaoProperties;
 import com.core.notification.pretence.TasonFeignClient;
-import com.core.notification.provider.DataMapper;
+import com.core.notification.provider.MessageMapper;
 import com.core.template.dto.MessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Service
+@Service ("KakaoNotiProvider")
 @RequiredArgsConstructor
 public class KakaoNotiProvider implements NotificationProvider {
 
-    private final DataMapper dataMapper;
+    private final MessageMapper messageMapper;
+
+    private final TasonKakaoProperties props;
 
     private final TasonFeignClient tason;
 
@@ -26,15 +29,16 @@ public class KakaoNotiProvider implements NotificationProvider {
         List<MessageDto> data = new ArrayList<>();
 
         data.add(MessageDto.builder()
-                .map_content(dataMapper.contentMapper(templateCode, criteria))
+                .map_content(messageMapper.contentMapper(templateCode, criteria))
                 .template_code(templateCode)
                 .build());
 
         tason.sendKakao(
-                "support@spiderkim.com",
-                "KA",
-                "Auth_key",
-                data);
+                props.getTasId(),
+                props.getSendType(),
+                props.getAuthKey(),
+                data
+        );
 
     }
 

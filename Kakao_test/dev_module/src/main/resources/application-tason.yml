@@ -1,0 +1,16 @@
+###############################################################################
+#
+# Tason Configurations: https://tason.com/
+#
+###############################################################################
+
+spring.profile.include: notification
+
+tason.kakao:
+  enable: true
+  host: https://api.tason.com
+  auto-host: https://tason.com
+  auth-key: K3BZ56-NCZXQO-978QHD-HANSYC_526
+  sender: 01055787714
+  tas-id: support@spiderkim.com
+  send-type: KA

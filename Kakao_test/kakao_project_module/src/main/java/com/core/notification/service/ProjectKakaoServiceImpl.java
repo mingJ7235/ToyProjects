@@ -5,7 +5,7 @@ import com.core.template.dto.MessageDto;
 import com.core.template.dto.KakaoTemplateDto;
 import com.core.template.dto.ReturnDto;
 import com.core.notification.kakao.provider.KakaoNotiProvider;
-import com.core.notification.manager.KakaoTemplateManager;
+import com.core.template.manager.KakaoTemplateManager;
 import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;
@@ -26,7 +26,6 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     private final KakaoMemberRepository memberRepository;
     private final KakaoNotiProvider kakaoSendManager;
     private final KakaoTemplateManager kakaoTemplateManager;
-    private final KakaoCriteriaMaker kakaoCriteriaMaker;
 
     @Override
     public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {

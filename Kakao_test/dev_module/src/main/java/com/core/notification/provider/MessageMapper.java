@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @RequiredArgsConstructor
-public class DataMapper {
+public class MessageMapper {
 
     private final KakaoTemplateRepository templateRepository;
 

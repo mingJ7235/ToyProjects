@@ -1,4 +1,4 @@
-package com.core.notification.manager;
+package com.core.template.manager;
 
 import com.core.template.repository.TemplateSpecs;
 import com.core.template.repository.KakaoTemplateRepository;
