@@ -17,6 +17,7 @@ public interface TasonFeignClient {
 
     @PostMapping (value = "/tas-api/kakaosend")
     public void sendKakao(
+            //Feign 의 파라미터는 한개만 들어갈 수 있다.
             ReturnDto returnDto
     );
 
