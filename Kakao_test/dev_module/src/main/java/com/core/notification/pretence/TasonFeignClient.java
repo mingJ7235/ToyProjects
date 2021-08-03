@@ -1,6 +1,7 @@
 package com.core.notification.pretence;
 
 import com.core.template.dto.MessageDto;
+import com.core.template.dto.ReturnDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -16,11 +17,7 @@ public interface TasonFeignClient {
 
     @PostMapping (value = "/tas-api/kakaosend")
     public void sendKakao(
-            
-            String tas_id,
-            String send_type,
-            String auth_key,
-            List<MessageDto> data
+            ReturnDto returnDto
     );
 
 

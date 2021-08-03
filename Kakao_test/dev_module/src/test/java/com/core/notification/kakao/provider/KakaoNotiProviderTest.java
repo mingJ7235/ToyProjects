@@ -1,4 +1,5 @@
-import com.core.KakaoDevApplication;
+package com.core.notification.kakao.provider;
+
 import com.core.notification.NotificationProvider;
 import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
@@ -13,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 
-@SpringBootTest (classes = KakaoDevApplication.class)
+@SpringBootTest
 @Transactional
-public class TestScatch {
+class KakaoNotiProviderTest {
 
     @Autowired
     @Qualifier("KakaoNotiProvider")
@@ -27,12 +28,6 @@ public class TestScatch {
     @Autowired
     KakaoTemplateRepository templateRepository;
 
-
-    @Test
-    void ReplaceTest() {
-        System.out.println("RESUST : "+ "abc #{고객이름} #{고객정보1} bbc"
-                .replaceAll("#\\{고객이름}", "김현욱"));
-    }
 
     @Test
     @SuppressWarnings("serial")
@@ -60,8 +55,4 @@ public class TestScatch {
         //then
     }
 
-    @Test
-    void ConfigurationTest () {
-
-    }
 }

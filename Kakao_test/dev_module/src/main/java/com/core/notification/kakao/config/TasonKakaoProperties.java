@@ -12,9 +12,9 @@ import java.util.Map;
 @Getter
 @Setter
 @Configuration
-@ConditionalOnExpression("${tason.kakao.enable:false}")
+//@ConditionalOnExpression("${tason.kakao.enable:false}")
 @ConfigurationProperties ("tason.kakao")
-@ComponentScan ("com.core.notification.kakao.config")
+//@ComponentScan ("com.core.notification.kakao.config")
 public class TasonKakaoProperties {
 
     private String host;

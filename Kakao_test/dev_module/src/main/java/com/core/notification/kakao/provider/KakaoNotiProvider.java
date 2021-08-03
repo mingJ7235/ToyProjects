@@ -5,18 +5,21 @@ import com.core.notification.kakao.config.TasonKakaoProperties;
 import com.core.notification.pretence.TasonFeignClient;
 import com.core.notification.provider.MessageMapper;
 import com.core.template.dto.MessageDto;
+import com.core.template.dto.ReturnDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.PostLoad;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Service ("KakaoNotiProvider")
-@ConditionalOnExpression("${tason.kakao.enable:false}")
+@Service("KakaoNotiProvider")
+//@ConditionalOnExpression("${tason.kakao.enable:false}")
 @RequiredArgsConstructor
 public class KakaoNotiProvider implements NotificationProvider {
 
@@ -26,6 +29,10 @@ public class KakaoNotiProvider implements NotificationProvider {
 
     private final TasonFeignClient tason;
 
+ @PostConstruct
+ public void init() {
+     log.debug("");
+ }
     @Override
     public void sendMessage (String templateCode, Map<String, String> criteria) {
         List<MessageDto> data = new ArrayList<>();
@@ -36,10 +43,12 @@ public class KakaoNotiProvider implements NotificationProvider {
                 .build());
 
         tason.sendKakao(
-                props.getTasId(),
-                props.getSendType().get("sendKakao"),
-                props.getAuthKey(),
-                data
+                ReturnDto.builder()
+                        .tas_id(props.getTasId())
+                        .auth_key(props.getAuthKey())
+                        .send_type(props.getSendType().get("sendKakao"))
+                        .data(data)
+                        .build()
         );
 
     }

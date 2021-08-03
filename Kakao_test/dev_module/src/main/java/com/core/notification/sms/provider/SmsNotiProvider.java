@@ -3,7 +3,6 @@ package com.core.notification.sms.provider;
 import com.core.notification.NotificationProvider;
 import com.core.notification.pretence.TasonFeignClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 

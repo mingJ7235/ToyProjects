@@ -11,3 +11,6 @@ notification.properties:
     - joe@spiderkim.com
     - jjh@spiderkim.com
     - jj@spiderkim.com
+
+feign.okhttp.enabled: true
+feign.client.config.default.loggerLevel: FULL
