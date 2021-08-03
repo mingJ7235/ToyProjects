@@ -8,6 +8,7 @@ import com.kakao.manager.KakaoSendManager;
 import com.kakao.manager.KakaoTemplateManager;
 import com.kakao.model.KakaoMember;
 import com.kakao.model.KakaoTemplate;
+import com.kakao.provider.CriteriaMaker;
 import com.kakao.repository.KakaoMemberRepository;
 import com.kakao.service.contract.ProjectKakaoService;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,12 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     private final KakaoMemberRepository memberRepository;
     private final KakaoSendManager kakaoSendManager;
     private final KakaoTemplateManager kakaoTemplateManager;
+    private final CriteriaMaker criteriaMaker;
 
     @Override
-    public ReturnDto sendKakaoMessage(Long memberId, String templateCode, Map<String, String> criteria) {
+    public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {
+
+        Map<String, String> criteria = criteriaMaker.makeCriteria(memberId);
 
         String auth_key = "";
         String sender = "";

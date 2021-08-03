@@ -10,7 +10,7 @@ import java.util.Map;
 public interface ProjectKakaoService {
 
     //send message
-    ReturnDto sendKakaoMessage (Long memberId, String templateCode, Map<String, String> criteria);
+    ReturnDto sendKakaoMessage (Long memberId, String templateCode);
 
     //manage templates
 

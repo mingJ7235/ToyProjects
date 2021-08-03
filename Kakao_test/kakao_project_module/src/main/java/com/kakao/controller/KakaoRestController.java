@@ -17,8 +17,8 @@ public class KakaoRestController {
     private final ProjectKakaoService service;
 
     @PostMapping ("/kakaosend")
-    public ReturnDto sendMessage (Long memberId, String templateCode, Map<String, String> criteria) {
-        return service.sendKakaoMessage(memberId, templateCode, criteria);
+    public ReturnDto sendMessage (Long memberId, String templateCode) {
+        return service.sendKakaoMessage(memberId, templateCode);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.kakao.provider;
 
+import com.kakao.model.KakaoMember;
 import com.kakao.repository.KakaoMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,14 +10,17 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class KakaoCriteria {
+public class CriteriaMaker {
 
     private final KakaoMemberRepository memberRepository;
 
-    public Map<String, String> makeCriteria (String key, String value) {
-
+    public Map<String, String> makeCriteria (Long memberId) {
         Map<String, String> criteria = new HashMap<>();
-        criteria.put(key, value);
+
+        KakaoMember member = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
+
+        criteria.put("고객이름", member.getUserName());
+        criteria.put("고객번호", member.getUserEmail());
 
         return criteria;
     }

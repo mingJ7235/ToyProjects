@@ -1,6 +1,7 @@
 package com.kakao.manager;
 
 import com.kakao.dto.DataDto;
+import com.kakao.provider.CriteriaMaker;
 import com.kakao.provider.DataMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
