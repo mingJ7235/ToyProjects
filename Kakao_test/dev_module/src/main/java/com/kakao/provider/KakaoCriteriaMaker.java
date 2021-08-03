@@ -19,7 +19,7 @@ public class KakaoCriteriaMaker {
 
         KakaoMember member = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
 
-        //tas on 변수들
+        //contents 변수들
         criteria.put("고객이름", member.getUserName());
         criteria.put("고객번호", member.getUserEmail());
 
