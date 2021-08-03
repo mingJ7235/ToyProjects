@@ -1,0 +1,13 @@
+###############################################################################
+#
+# Notification Configurations
+#
+###############################################################################
+notification.properties:
+  name: SpiderKim
+  sender: support@spiderkim.com
+  receivers:
+    - support@spiderkim.com
+    - joe@spiderkim.com
+    - jjh@spiderkim.com
+    - jj@spiderkim.com

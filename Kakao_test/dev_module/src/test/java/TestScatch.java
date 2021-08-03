@@ -1,6 +1,7 @@
 import com.core.KakaoDevApplication;
 import com.core.notification.NotificationProvider;
 import com.core.notification.kakao.config.TasonKakaoProperties;
+import com.core.notification.kakao.provider.KakaoNotiProvider;
 import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;

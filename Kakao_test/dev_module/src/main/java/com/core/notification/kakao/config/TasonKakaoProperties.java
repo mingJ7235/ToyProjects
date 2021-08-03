@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+
+import java.util.Map;
 
 @Getter
 @Setter
@@ -20,13 +21,14 @@ public class TasonKakaoProperties {
 
     private String autoHost;
 
+    private String tasId;
+
     private String authKey;
 
     private String sender;
 
-    private String tasId;
+    private String senderName;
 
-    private String sendType;
+    private Map<String, String> sendType;
 
-    private String sender_name = "SpiderKim";
 }

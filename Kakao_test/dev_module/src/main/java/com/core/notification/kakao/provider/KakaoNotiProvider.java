@@ -7,6 +7,7 @@ import com.core.notification.provider.MessageMapper;
 import com.core.template.dto.MessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @Slf4j
 @Service ("KakaoNotiProvider")
+@ConditionalOnExpression("${tason.kakao.enable:false}")
 @RequiredArgsConstructor
 public class KakaoNotiProvider implements NotificationProvider {
 
@@ -35,7 +37,7 @@ public class KakaoNotiProvider implements NotificationProvider {
 
         tason.sendKakao(
                 props.getTasId(),
-                props.getSendType(),
+                props.getSendType().get("sendKakao"),
                 props.getAuthKey(),
                 data
         );
