@@ -8,7 +8,7 @@ import com.kakao.manager.KakaoSendManager;
 import com.kakao.manager.KakaoTemplateManager;
 import com.kakao.model.KakaoMember;
 import com.kakao.model.KakaoTemplate;
-import com.kakao.provider.CriteriaMaker;
+import com.kakao.provider.KakaoCriteriaMaker;
 import com.kakao.repository.KakaoMemberRepository;
 import com.kakao.service.contract.ProjectKakaoService;
 import lombok.RequiredArgsConstructor;
@@ -27,16 +27,16 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     private final KakaoMemberRepository memberRepository;
     private final KakaoSendManager kakaoSendManager;
     private final KakaoTemplateManager kakaoTemplateManager;
-    private final CriteriaMaker criteriaMaker;
+    private final KakaoCriteriaMaker kakaoCriteriaMaker;
 
     @Override
     public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {
 
-        Map<String, String> criteria = criteriaMaker.makeCriteria(memberId);
-
         String auth_key = "";
         String sender = "";
         String sender_name = "";
+
+        Map<String, String> criteria = kakaoCriteriaMaker.makeCriteria(memberId);
 
         //DataDTO 조립
         KakaoMember kakaoMember = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
