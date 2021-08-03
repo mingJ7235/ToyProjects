@@ -5,11 +5,12 @@ import com.kakao.dto.ReturnDto;
 import com.kakao.model.KakaoTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProjectKakaoService {
 
     //send message
-    ReturnDto sendKakaoMessage (Long memberId, String templateCode);
+    ReturnDto sendKakaoMessage (Long memberId, String templateCode, Map<String, String> criteria);
 
     //manage templates
 

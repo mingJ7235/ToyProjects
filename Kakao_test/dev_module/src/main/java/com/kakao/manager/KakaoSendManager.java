@@ -1,13 +1,10 @@
 package com.kakao.manager;
 
 import com.kakao.dto.DataDto;
-import com.kakao.dto.ReturnDto;
 import com.kakao.provider.DataMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -20,9 +17,9 @@ public class KakaoSendManager {
 
         String content = dataMapper.contentMapper(templateCode, criteria);
 
-
         return DataDto.builder()
-
+                .content(content)
+                .template_code(templateCode)
                 .build();
     }
 
