@@ -14,7 +14,6 @@ import java.util.Map;
 @Configuration
 //@ConditionalOnExpression("${tason.kakao.enable:false}")
 @ConfigurationProperties ("tason.kakao")
-//@ComponentScan ("com.core.notification.kakao.config")
 public class TasonKakaoProperties {
 
     private String host;

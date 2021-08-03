@@ -29,10 +29,6 @@ public class KakaoNotiProvider implements NotificationProvider {
 
     private final TasonFeignClient tason;
 
- @PostConstruct
- public void init() {
-     log.debug("");
- }
     @Override
     public void sendMessage (String templateCode, Map<String, String> criteria) {
         List<MessageDto> data = new ArrayList<>();
@@ -53,15 +49,6 @@ public class KakaoNotiProvider implements NotificationProvider {
 
     }
 
-//    @Override
-//    public boolean sendMessage(MessageDto messageDto) {
-//        // Kakao API 호출 코드
-//        // FeignClient
-//
-//        tason.sendKakao();
-//
-//        return false;
-//    }
 
 
 //    private final PaymentSucceedNotification paymentSucceedNotification;
