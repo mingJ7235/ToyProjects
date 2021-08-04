@@ -37,7 +37,7 @@ class KakaoNotiProviderTest {
 
     @Test
     @SuppressWarnings("serial")
-    void KakaoSendTest() {
+    void 카카오_알림톡_보내기_테스트() {
         //given
         KakaoMember member = new KakaoMember();
         KakaoTemplate template = new KakaoTemplate();
