@@ -41,10 +41,6 @@ class KakaoNotiProviderTest {
         KakaoMember member = new KakaoMember();
         KakaoTemplate template = new KakaoTemplate();
 
-        member.setUserName("kim01");
-        member.setUserEmail("029999");
-        memberRepository.save(member);
-
         template.setContent("#{고객이름}님 안녕하세요 반갑습니다.\n " +
                             "#{고객이름}님의 번호는 #{고객번호}입니다.");
         template.setTemplateCode("기간만료안내");

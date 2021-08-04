@@ -31,19 +31,33 @@ public class KakaoNotiProvider implements NotificationProvider {
         List<MessageDto> data = new ArrayList<>();
 
         data.add(MessageDto.builder()
+                .user_name(criteria.get("고객이름"))
+                .user_email(criteria.get("고객번호"))
                 .map_content(messageMapper.contentMapper(templateCode, criteria))
-                .sender(props.getSender())
+                .sender(0+props.getSender())
                 .sender_name(props.getSenderName())
                 .template_code(templateCode)
                 .build());
 
+        ReturnDto returnDto = ReturnDto.builder()
+                .tas_id(props.getTasId())
+                .auth_key(props.getAuthKey())
+                .send_type(props.getSendType().get("send-kakao"))
+                .data(data)
+                .build();
+
+        System.out.println(">>>>>>>>>>>>>>>>tas_id : "+returnDto.getTas_id());
+        System.out.println(">>>>>>>>>>>>>>>>send_type : "+returnDto.getSend_type());
+        System.out.println(">>>>>>>>>>>>>>>>auth_key : "+returnDto.getAuth_key());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getUser_name());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getUser_email());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getMap_content());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getSender());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getSender_name());
+        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getTemplate_code());
+
         tason.sendKakao(
-                ReturnDto.builder()
-                        .tas_id(props.getTasId())
-                        .auth_key(props.getAuthKey())
-                        .send_type(props.getSendType().get("sendKakao"))
-                        .data(data)
-                        .build()
+                returnDto
         );
 
     }
