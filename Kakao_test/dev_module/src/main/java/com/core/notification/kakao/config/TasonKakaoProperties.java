@@ -18,8 +18,6 @@ public class TasonKakaoProperties {
 
     private String host;
 
-    private String autoHost;
-
     private String tasId;
 
     private String authKey;
