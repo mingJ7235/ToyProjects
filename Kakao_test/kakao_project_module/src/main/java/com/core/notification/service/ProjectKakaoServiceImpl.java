@@ -30,33 +30,34 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     @Override
     public ReturnDto sendKakaoMessage(Long memberId, String templateCode) {
 
-        String auth_key = "";
-        String sender = "";
-        String sender_name = "";
-
-        Map<String, String> criteria = kakaoCriteriaMaker.makeCriteria(memberId);
-
-        //DataDTO 조립
-        KakaoMember kakaoMember = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
-        KakaoMemberDto memberDto = new KakaoMemberDto(kakaoMember);
-
-        MessageDto messageDto = kakaoSendManager.sendMessage(templateCode, criteria);
-
-        messageDto.setUser_name(memberDto.getUserName());
-        messageDto.setUser_email(memberDto.getUserEmail());
-        messageDto.setSender(sender);
-        messageDto.setSender_name(sender_name);
-
-        List<MessageDto> messageDtoList = new ArrayList<>();
-        messageDtoList.add(messageDto);
-
-        //ReturnDTO 조립 후 리턴
-        return ReturnDto.builder()
-                .tas_id("support@spiderkim.com")
-                .send_type("KA")
-                .auth_key(auth_key)
-                .data(messageDtoList)
-                .build();
+//        String auth_key = "";
+//        String sender = "";
+//        String sender_name = "";
+//
+//        Map<String, String> criteria = kakaoCriteriaMaker.makeCriteria(memberId);
+//
+//        //DataDTO 조립
+//        KakaoMember kakaoMember = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
+//        KakaoMemberDto memberDto = new KakaoMemberDto(kakaoMember);
+//
+//        MessageDto messageDto = kakaoSendManager.sendMessage(templateCode, criteria);
+//
+//        messageDto.setUser_name(memberDto.getUserName());
+//        messageDto.setUser_email(memberDto.getUserEmail());
+//        messageDto.setSender(sender);
+//        messageDto.setSender_name(sender_name);
+//
+//        List<MessageDto> messageDtoList = new ArrayList<>();
+//        messageDtoList.add(messageDto);
+//
+//        //ReturnDTO 조립 후 리턴
+//        return ReturnDto.builder()
+//                .tas_id("support@spiderkim.com")
+//                .send_type("KA")
+//                .auth_key(auth_key)
+//                .data(messageDtoList)
+//                .build();
+        return null;
     }
 
     @Override

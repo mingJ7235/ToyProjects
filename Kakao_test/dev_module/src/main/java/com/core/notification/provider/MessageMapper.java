@@ -28,11 +28,4 @@ public class MessageMapper {
 
 }
 
-//class NotificationSender() {
-//    sendMessge(String templateCode, Map<String, String> criteria) {
-//        ReturnDto.builder()
-//                .auth_key()
-//                .
-//                .build();
-//    }
-//}
+

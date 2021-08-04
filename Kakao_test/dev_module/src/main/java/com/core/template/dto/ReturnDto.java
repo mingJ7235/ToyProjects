@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -24,4 +26,21 @@ public class ReturnDto {
         this.auth_key = auth_key;
         this.data = data;
     }
+
+    public void addData(MessageDto message) {
+        if(data == null) data = new ArrayList<>();
+        data.add(message);
+    }
+
+    public void addData(MessageDto... message) {
+        if(data == null) data = new ArrayList<>();
+        data.addAll(Arrays.asList(message));
+    }
+
+    public void addData (List<MessageDto> messages) {
+        if (data == null) data = new ArrayList<>();
+        data.addAll(messages);
+    }
+
+
 }

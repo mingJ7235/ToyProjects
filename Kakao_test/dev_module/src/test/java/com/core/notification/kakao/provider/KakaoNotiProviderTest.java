@@ -1,6 +1,7 @@
 package com.core.notification.kakao.provider;
 
 import com.core.notification.NotificationProvider;
+import com.core.notification.SendNotiMessage;
 import com.core.notification.provider.MessageMapper;
 import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
@@ -57,12 +58,20 @@ class KakaoNotiProviderTest {
         criteria.put("고객이름", findMember.getUserName());
         criteria.put ("고객번호", findMember.getUserEmail());
 
+
+        SendNotiMessage sendNotiMessage = SendNotiMessage.builder()
+                .userName(findMember.getUserName())
+                .userEmail(findMember.getUserEmail())
+                .templateCode("C_SE_018_02_27268")
+                .criteria(criteria)
+                .build();
+
         //when
         String message = mapper.contentMapper(template.getTemplateCode(), criteria);
 
         System.out.println(">>>>>>>>>>" + message);
 
-        sendManager.sendMessage("C_SE_018_02_27268", criteria);
+        sendManager.sendMessage(sendNotiMessage) ;
 
         //then
     }
