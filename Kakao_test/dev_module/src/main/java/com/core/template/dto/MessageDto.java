@@ -18,8 +18,10 @@ public class MessageDto {
     private String template_code;
 
     @Builder
-    public MessageDto(String map_content, String template_code) {
+    public MessageDto(String map_content, String sender, String sender_name, String template_code) {
         this.map_content = map_content;
+        this.sender = sender;
+        this.sender_name = sender_name;
         this.template_code = template_code;
     }
 

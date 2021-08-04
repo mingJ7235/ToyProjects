@@ -8,11 +8,8 @@ import com.core.template.dto.MessageDto;
 import com.core.template.dto.ReturnDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.PostLoad;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +32,8 @@ public class KakaoNotiProvider implements NotificationProvider {
 
         data.add(MessageDto.builder()
                 .map_content(messageMapper.contentMapper(templateCode, criteria))
+                .sender(props.getSender())
+                .sender_name(props.getSenderName())
                 .template_code(templateCode)
                 .build());
 

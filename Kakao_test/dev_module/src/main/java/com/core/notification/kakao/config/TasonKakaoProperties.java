@@ -13,7 +13,7 @@ import java.util.Map;
 @Setter
 @Configuration
 //@ConditionalOnExpression("${tason.kakao.enable:false}")
-@ConfigurationProperties ("tason.kakao")
+@ConfigurationProperties ("tason.kakao") //yml 파일의 이름을 불러온다.
 public class TasonKakaoProperties {
 
     private String host;
