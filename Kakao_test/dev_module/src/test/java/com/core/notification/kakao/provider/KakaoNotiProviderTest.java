@@ -41,9 +41,14 @@ class KakaoNotiProviderTest {
         KakaoMember member = new KakaoMember();
         KakaoTemplate template = new KakaoTemplate();
 
-        template.setContent("#{고객이름}님 안녕하세요 반갑습니다.\n " +
-                            "#{고객이름}님의 번호는 #{고객번호}입니다.");
-        template.setTemplateCode("기간만료안내");
+        template.setContent("[스파이더킴] 안녕하세요. 회원님의 이용권 만료 3일 전입니다.\n" +
+                "\n" +
+                "▶이용권 : #{고객이름}\n" +
+                "▶기간옵션 : #{고객번호}\n" +
+                "▶서비스 이용기간 : #{고객이름}\n" +
+                "\n" +
+                "이용권 만료 시점에 베이직 요금제로 변경됩니다. 감사합니다.");
+        template.setTemplateCode("C_SE_018_02_27268");
         templateRepository.save(template);
 
         KakaoMember findMember = memberRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
@@ -57,7 +62,7 @@ class KakaoNotiProviderTest {
 
         System.out.println(">>>>>>>>>>" + message);
 
-        sendManager.sendMessage("기간만료안내", criteria);
+        sendManager.sendMessage("C_SE_018_02_27268", criteria);
 
         //then
     }

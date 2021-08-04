@@ -46,19 +46,17 @@ public class KakaoNotiProvider implements NotificationProvider {
                 .data(data)
                 .build();
 
-        System.out.println(">>>>>>>>>>>>>>>>tas_id : "+returnDto.getTas_id());
-        System.out.println(">>>>>>>>>>>>>>>>send_type : "+returnDto.getSend_type());
-        System.out.println(">>>>>>>>>>>>>>>>auth_key : "+returnDto.getAuth_key());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getUser_name());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getUser_email());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getMap_content());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getSender());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getSender_name());
-        System.out.println(">>>>>>>>>>>>>>>>data : "+returnDto.getData().get(0).getTemplate_code());
+        System.out.println(">>>>>>>tas_id : "+returnDto.getTas_id());
+        System.out.println(">>>>>>>send_type : "+returnDto.getSend_type());
+        System.out.println(">>>>>>>auth_key : "+returnDto.getAuth_key());
+        System.out.println(">>>>>>>data-name : "+returnDto.getData().get(0).getUser_name());
+        System.out.println(">>>>>>>data-num : "+returnDto.getData().get(0).getUser_email());
+        System.out.println(">>>>>>>data-content : "+returnDto.getData().get(0).getMap_content());
+        System.out.println(">>>>>>>data-sender : "+returnDto.getData().get(0).getSender_name());
+        System.out.println(">>>>>>>data-senderNum : "+returnDto.getData().get(0).getSender());
+        System.out.println(">>>>>>>data-templateCode : "+returnDto.getData().get(0).getTemplate_code());
 
-        tason.sendKakao(
-                returnDto
-        );
+        tason.sendKakao(returnDto);
 
     }
 
