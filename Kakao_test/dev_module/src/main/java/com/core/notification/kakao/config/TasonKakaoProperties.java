@@ -28,6 +28,5 @@ public class TasonKakaoProperties {
 
     private String senderName;
 
-    private Map<String, String> sendType;
 
 }
