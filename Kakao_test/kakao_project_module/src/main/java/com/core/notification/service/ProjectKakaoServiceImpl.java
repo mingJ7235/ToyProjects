@@ -1,12 +1,9 @@
 package com.core.notification.service;
 
-import com.core.template.dto.KakaoMemberDto;
-import com.core.template.dto.MessageDto;
 import com.core.template.dto.KakaoTemplateDto;
-import com.core.template.dto.ReturnDto;
-import com.core.notification.kakao.provider.KakaoNotiProvider;
+import com.core.notification.dto.ReturnDto;
+import com.core.notification.provider.KakaoNotiProvider;
 import com.core.template.manager.KakaoTemplateManager;
-import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;
 import com.core.notification.service.contract.ProjectKakaoService;
@@ -14,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor

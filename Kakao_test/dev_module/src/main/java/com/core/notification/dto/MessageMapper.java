@@ -1,4 +1,4 @@
-package com.core.notification.provider;
+package com.core.notification.dto;
 
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoTemplateRepository;

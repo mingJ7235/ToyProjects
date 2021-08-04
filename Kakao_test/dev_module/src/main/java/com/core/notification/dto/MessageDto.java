@@ -1,4 +1,4 @@
-package com.core.template.dto;
+package com.core.notification.dto;
 
 import lombok.Builder;
 import lombok.Getter;

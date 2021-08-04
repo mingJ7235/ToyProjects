@@ -1,11 +1,11 @@
-package com.core.notification.sms.provider;
+package com.core.notification.provider;
 
 import com.core.notification.NotificationProvider;
 import com.core.notification.SendNotiMessage;
-import com.core.notification.kakao.config.TasonKakaoProperties;
+import com.core.notification.config.TasonKakaoProperties;
 import com.core.notification.pretence.TasonFeignClient;
-import com.core.notification.provider.MessageMapper;
-import com.core.template.dto.MessageDto;
+import com.core.notification.dto.MessageMapper;
+import com.core.notification.dto.MessageDto;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;

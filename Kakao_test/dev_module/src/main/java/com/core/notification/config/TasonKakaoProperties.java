@@ -1,4 +1,4 @@
-package com.core.notification.kakao.config;
+package com.core.notification.config;
 
 import lombok.Getter;
 import lombok.Setter;

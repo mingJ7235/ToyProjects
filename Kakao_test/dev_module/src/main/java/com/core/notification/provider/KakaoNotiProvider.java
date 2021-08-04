@@ -1,13 +1,13 @@
-package com.core.notification.kakao.provider;
+package com.core.notification.provider;
 
 import com.core.notification.NotificationProvider;
 import com.core.notification.SendNotiMessage;
-import com.core.notification.config.SendType;
-import com.core.notification.kakao.config.TasonKakaoProperties;
+import com.core.notification.constant.SendType;
+import com.core.notification.config.TasonKakaoProperties;
 import com.core.notification.pretence.TasonFeignClient;
-import com.core.notification.provider.MessageMapper;
-import com.core.template.dto.MessageDto;
-import com.core.template.dto.ReturnDto;
+import com.core.notification.dto.MessageMapper;
+import com.core.notification.dto.MessageDto;
+import com.core.notification.dto.ReturnDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,16 +37,6 @@ public class KakaoNotiProvider implements NotificationProvider {
 
     @Override
     public void sendMessage (String userName, String userEmail, String templateCode, Map<String, String> criteria) {
-//        List<MessageDto> data = new ArrayList<>();
-//
-//        data.add(MessageDto.builder()
-//                .user_name(userName)
-//                .user_email(userEmail)
-//                .map_content(messageMapper.contentMapper(templateCode, criteria))
-//                .sender(0+props.getSender())
-//                .sender_name(props.getSenderName())
-//                .template_code(templateCode)
-//                .build());
 
         MessageDto messageDto = MessageDto.builder()
                 .user_name(userName)

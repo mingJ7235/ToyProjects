@@ -2,7 +2,7 @@ package com.core.notification.kakao.provider;
 
 import com.core.notification.NotificationProvider;
 import com.core.notification.SendNotiMessage;
-import com.core.notification.provider.MessageMapper;
+import com.core.notification.dto.MessageMapper;
 import com.core.template.model.KakaoMember;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;

@@ -1,6 +1,6 @@
 package com.core.notification.controller;
 
-import com.core.template.dto.ReturnDto;
+import com.core.notification.dto.ReturnDto;
 import com.core.notification.service.contract.ProjectKakaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

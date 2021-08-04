@@ -1,6 +1,6 @@
 package com.core.notification.service.contract;
 
-import com.core.template.dto.ReturnDto;
+import com.core.notification.dto.ReturnDto;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.dto.KakaoTemplateDto;
 
