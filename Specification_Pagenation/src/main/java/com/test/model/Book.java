@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -16,5 +14,17 @@ import javax.persistence.Id;
 public class Book {
 
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
+
+    @Column (nullable = false)
+    private String title;
+
+    @ManyToOne
+    @JoinColumn (name = "author_id")
+    private Author author;
+
+    @Column (nullable = false)
+    private String price;
+    private Date publishedAt;
+
 }
