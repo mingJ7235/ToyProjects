@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDateTime;
 
 public class TemplateSpecs {
-
+    //테스트
     public static Specification<KakaoTemplate> likeContent (final String content) {
         return new Specification<KakaoTemplate>() {
             @Override
