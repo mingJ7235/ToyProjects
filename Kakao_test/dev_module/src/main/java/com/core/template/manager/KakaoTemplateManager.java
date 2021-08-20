@@ -1,5 +1,6 @@
 package com.core.template.manager;
 
+import com.core.template.exception.DuplicateException;
 import com.core.template.repository.TemplateSpecs;
 import com.core.template.repository.KakaoTemplateRepository;
 import com.core.template.model.KakaoTemplate;
@@ -39,7 +40,7 @@ public class KakaoTemplateManager {
     }
 
 
-    public KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto) {
+    public KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException {
 
         int check = kakaoTemplateRepository.checkDuplicateCode(code);
         KakaoTemplate kakaoTemplate = kakaoTemplateRepository.findByTemplateCode(code).orElseThrow(IllegalAccessError::new);
@@ -47,7 +48,7 @@ public class KakaoTemplateManager {
 
         if (!kakaoTemplate.getTemplateCode().equals(templateDto.getTemplateCode())) {
             if (check > 0) {
-                //exception
+                throw new DuplicateException();
             }
         }
 
