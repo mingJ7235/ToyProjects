@@ -19,7 +19,7 @@ public interface ProjectKakaoService {
 
     List<KakaoTemplate> getListTemplate ();
 
-    Long updateTemplate (Long templateId, KakaoTemplateDto templateDto);
+    KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto);
 
     void deleteTemplate (Long templateID);
 

@@ -71,8 +71,8 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     }
 
     @Override
-    public Long updateTemplate(Long templateId, KakaoTemplateDto templateDto) {
-        return kakaoTemplateManager.updateTemplate(templateId, templateDto);
+    public KakaoTemplate updateTemplate(String code, KakaoTemplateDto templateDto) {
+        return kakaoTemplateManager.updateTemplate(code, templateDto);
     }
 
     @Override

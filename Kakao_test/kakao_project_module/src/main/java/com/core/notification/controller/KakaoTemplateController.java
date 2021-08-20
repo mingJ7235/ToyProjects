@@ -22,9 +22,9 @@ public class KakaoTemplateController {
     }
 
     @PatchMapping ("/templates/{templateId}")
-    public Long updateTemplate (@PathVariable @NotBlank Long templateId,
+    public KakaoTemplate updateTemplate (@PathVariable @NotBlank String code,
                                 @ModelAttribute @Valid KakaoTemplateDto templateDto) {
-        return service.updateTemplate(templateId, templateDto);
+        return service.updateTemplate(code, templateDto);
     }
 
     @GetMapping ("/templates/{templateId}")

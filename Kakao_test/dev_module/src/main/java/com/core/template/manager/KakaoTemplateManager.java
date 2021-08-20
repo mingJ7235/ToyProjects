@@ -39,11 +39,21 @@ public class KakaoTemplateManager {
     }
 
 
-    public Long updateTemplate (Long templateId, KakaoTemplateDto templateDto) {
-        KakaoTemplate kakaoTemplate = findTemplate(templateId);
+    public KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto) {
+
+        int check = kakaoTemplateRepository.checkDuplicateCode(code);
+        KakaoTemplate kakaoTemplate = kakaoTemplateRepository.findByTemplateCode(code).orElseThrow(IllegalAccessError::new);
+
+
+        if (!kakaoTemplate.getTemplateCode().equals(templateDto.getTemplateCode())) {
+            if (check > 0) {
+                //exception
+            }
+        }
+
         kakaoTemplate.setContent(templateDto.getContent());
         kakaoTemplate.setTemplateCode(templateDto.getTemplateCode());
-        return templateId;
+        return kakaoTemplate;
     }
 
     public void deleteTemplate (Long templateId) {
