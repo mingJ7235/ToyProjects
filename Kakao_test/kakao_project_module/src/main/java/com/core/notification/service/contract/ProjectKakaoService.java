@@ -1,6 +1,7 @@
 package com.core.notification.service.contract;
 
 import com.core.notification.dto.ReturnDto;
+import com.core.template.exception.DuplicateException;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.dto.KakaoTemplateDto;
 
@@ -19,7 +20,7 @@ public interface ProjectKakaoService {
 
     List<KakaoTemplate> getListTemplate ();
 
-    KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto);
+    KakaoTemplateDto updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException;
 
     void deleteTemplate (Long templateID);
 

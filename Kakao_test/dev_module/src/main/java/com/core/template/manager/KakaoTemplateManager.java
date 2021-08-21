@@ -40,7 +40,7 @@ public class KakaoTemplateManager {
     }
 
 
-    public KakaoTemplate updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException {
+    public KakaoTemplateDto updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException {
 
         int check = kakaoTemplateRepository.checkDuplicateCode(code);
         KakaoTemplate kakaoTemplate = kakaoTemplateRepository.findByTemplateCode(code).orElseThrow(IllegalAccessError::new);
@@ -54,7 +54,7 @@ public class KakaoTemplateManager {
 
         kakaoTemplate.setContent(templateDto.getContent());
         kakaoTemplate.setTemplateCode(templateDto.getTemplateCode());
-        return kakaoTemplate;
+        return new KakaoTemplateDto(kakaoTemplate);
     }
 
     public void deleteTemplate (Long templateId) {

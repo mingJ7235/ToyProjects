@@ -3,6 +3,7 @@ package com.core.notification.service;
 import com.core.template.dto.KakaoTemplateDto;
 import com.core.notification.dto.ReturnDto;
 import com.core.notification.provider.KakaoNotiProvider;
+import com.core.template.exception.DuplicateException;
 import com.core.template.manager.KakaoTemplateManager;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;
@@ -71,7 +72,7 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     }
 
     @Override
-    public KakaoTemplate updateTemplate(String code, KakaoTemplateDto templateDto) {
+    public KakaoTemplateDto updateTemplate(String code, KakaoTemplateDto templateDto) throws DuplicateException {
         return kakaoTemplateManager.updateTemplate(code, templateDto);
     }
 

@@ -1,6 +1,7 @@
 package com.core.notification.controller;
 
 import com.core.template.dto.KakaoTemplateDto;
+import com.core.template.exception.DuplicateException;
 import com.core.template.model.KakaoTemplate;
 import com.core.notification.service.contract.ProjectKakaoService;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,8 @@ public class KakaoTemplateController {
     }
 
     @PatchMapping ("/templates/{templateId}")
-    public KakaoTemplate updateTemplate (@PathVariable @NotBlank String code,
-                                @ModelAttribute @Valid KakaoTemplateDto templateDto) {
+    public KakaoTemplateDto updateTemplate (@PathVariable @NotBlank String code,
+                                @ModelAttribute @Valid KakaoTemplateDto templateDto) throws DuplicateException {
         return service.updateTemplate(code, templateDto);
     }
 
