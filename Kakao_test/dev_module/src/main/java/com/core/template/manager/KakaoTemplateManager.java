@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-
 @Service
 @RequiredArgsConstructor
 public class KakaoTemplateManager {
@@ -27,7 +26,6 @@ public class KakaoTemplateManager {
     public KakaoTemplateDto saveTemplate(KakaoTemplateDto templateDto) throws DuplicateException {
         int checkDuplicateCode = kakaoTemplateRepository.checkDuplicateCode(templateDto.getTemplateCode());
 
-        isEmpty()
 
         if (checkDuplicateCode > 0) {
             throw new DuplicateException();
