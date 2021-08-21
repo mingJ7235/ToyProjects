@@ -15,4 +15,6 @@ public interface KakaoTemplateRepository extends JpaRepository<KakaoTemplate, Lo
     @Query ("select count(*) from KakaoTemplate k where k.templateCode = :code")
     int checkDuplicateCode (@Param("code") String code);
 
+    int deleteByTemplateCode (String templateCode);
+
 }

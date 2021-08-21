@@ -1,50 +1,54 @@
 package com.core.template.manager;
 
-import com.core.template.exception.DuplicateException;
-import com.core.template.repository.TemplateSpecs;
-import com.core.template.repository.KakaoTemplateRepository;
-import com.core.template.model.KakaoTemplate;
+import com.core.template.dto.KakaoPageDto;
 import com.core.template.dto.KakaoTemplateDto;
+import com.core.template.dto.SearchCriteriaDto;
+import com.core.template.exception.DuplicateException;
+import com.core.template.model.KakaoTemplate;
+import com.core.template.repository.KakaoTemplateRepository;
+import com.core.template.repository.TemplateSpecs;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+
+
 
 @Service
 @RequiredArgsConstructor
 public class KakaoTemplateManager {
 
-    //템플릿들의 매개변수 관리는??
-
-    //관리할 수 있는 api도 개발하면 좋을것같다.
-
-    //specification 을 통해 검색기능 -> 관리자 입장에서 템플릿 관리를 위한 검색 기능
 
     private final KakaoTemplateRepository kakaoTemplateRepository;
 
-    public Long saveTemplate(KakaoTemplateDto templateDto) {
+    public KakaoTemplateDto saveTemplate(KakaoTemplateDto templateDto) throws DuplicateException {
+        int checkDuplicateCode = kakaoTemplateRepository.checkDuplicateCode(templateDto.getTemplateCode());
+
+        isEmpty()
+
+        if (checkDuplicateCode > 0) {
+            throw new DuplicateException();
+        }
+
         KakaoTemplate kakaoTemplate = templateDto.toEntity();
-        Long savedTemplateId = kakaoTemplateRepository.save(kakaoTemplate).getId();
-        return savedTemplateId;
+        return new KakaoTemplateDto(kakaoTemplate);
     }
 
     public KakaoTemplate getTemplate (Long templateId) {
         return findTemplate(templateId);
     }
 
-    public List<KakaoTemplate> getListTemplate () {
-        List<KakaoTemplate> templateList = kakaoTemplateRepository.findAll();
-        return templateList;
+    public List<KakaoTemplateDto> getListTemplate () {
+        return kakaoTemplateRepository.findAll().stream().map(KakaoTemplateDto::new).collect(Collectors.toList());
     }
 
 
     public KakaoTemplateDto updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException {
-
         int check = kakaoTemplateRepository.checkDuplicateCode(code);
         KakaoTemplate kakaoTemplate = kakaoTemplateRepository.findByTemplateCode(code).orElseThrow(IllegalAccessError::new);
-
 
         if (!kakaoTemplate.getTemplateCode().equals(templateDto.getTemplateCode())) {
             if (check > 0) {
@@ -52,33 +56,19 @@ public class KakaoTemplateManager {
             }
         }
 
+        kakaoTemplate.setSubject(templateDto.getSubject());
         kakaoTemplate.setContent(templateDto.getContent());
         kakaoTemplate.setTemplateCode(templateDto.getTemplateCode());
         return new KakaoTemplateDto(kakaoTemplate);
     }
 
-    public void deleteTemplate (Long templateId) {
-        KakaoTemplate kakaoTemplate = findTemplate(templateId);
-        kakaoTemplateRepository.delete(kakaoTemplate);
+    public int deleteTemplate (String templateCode) {
+        return kakaoTemplateRepository.deleteByTemplateCode(templateCode);
     }
 
-    //Specification 활용한 검색 (같은 것 검색)
-    public List<KakaoTemplate> searchTemplateList (String content) {
-        Specification<KakaoTemplate> spec = Specification.where(TemplateSpecs.equalContent(content));
-        return kakaoTemplateRepository.findAll(spec);
-    }
-
-    //비슷한것 검색
-    public List<KakaoTemplate> searchLikeTemplateList (String content) {
-        Specification<KakaoTemplate> spec = Specification.where(TemplateSpecs.likeContent(content));
-        return kakaoTemplateRepository.findAll(spec);
-    }
-
-    // 내용 + 기간
-    public List<KakaoTemplate> searchLikeAndPeriodTemplateList (String content, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        Specification<KakaoTemplate> spec = Specification.where(TemplateSpecs.likeContent(content));
-        spec.and(TemplateSpecs.betweenCreatedDateTim(startDateTime, endDateTime));
-        return kakaoTemplateRepository.findAll(spec);
+    public KakaoPageDto<KakaoTemplateDto> searchTemplate (SearchCriteriaDto criteria, Pageable pageable) {
+        Page<KakaoTemplateDto> kakaoPage = kakaoTemplateRepository.findAll(TemplateSpecs.search(criteria), pageable).map(KakaoTemplateDto::new);
+        return new KakaoPageDto<>(kakaoPage);
     }
 
     private KakaoTemplate findTemplate (Long templateId) {

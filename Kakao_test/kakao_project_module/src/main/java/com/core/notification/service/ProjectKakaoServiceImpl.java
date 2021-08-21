@@ -1,14 +1,17 @@
 package com.core.notification.service;
 
+import com.core.template.dto.KakaoPageDto;
 import com.core.template.dto.KakaoTemplateDto;
 import com.core.notification.dto.ReturnDto;
 import com.core.notification.provider.KakaoNotiProvider;
+import com.core.template.dto.SearchCriteriaDto;
 import com.core.template.exception.DuplicateException;
 import com.core.template.manager.KakaoTemplateManager;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.repository.KakaoMemberRepository;
 import com.core.notification.service.contract.ProjectKakaoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +22,6 @@ import java.util.List;
 @Transactional
 public class ProjectKakaoServiceImpl implements ProjectKakaoService {
 
-    private final KakaoMemberRepository memberRepository;
-    private final KakaoNotiProvider kakaoSendManager;
     private final KakaoTemplateManager kakaoTemplateManager;
 
     @Override
@@ -57,7 +58,7 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     }
 
     @Override
-    public Long saveTemplate(KakaoTemplateDto templateDto) {
+    public KakaoTemplateDto saveTemplate(KakaoTemplateDto templateDto) throws DuplicateException {
         return kakaoTemplateManager.saveTemplate(templateDto);
     }
 
@@ -67,7 +68,7 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     }
 
     @Override
-    public List<KakaoTemplate> getListTemplate() {
+    public List<KakaoTemplateDto> getListTemplate() {
         return kakaoTemplateManager.getListTemplate();
     }
 
@@ -77,7 +78,12 @@ public class ProjectKakaoServiceImpl implements ProjectKakaoService {
     }
 
     @Override
-    public void deleteTemplate(Long templateID) {
-        kakaoTemplateManager.deleteTemplate(templateID);
+    public int deleteTemplate(String code) {
+        return kakaoTemplateManager.deleteTemplate(code);
+    }
+
+    @Override
+    public KakaoPageDto<KakaoTemplateDto> searchTemplate(SearchCriteriaDto criteria, Pageable pageable) {
+        return kakaoTemplateManager.searchTemplate(criteria, pageable);
     }
 }

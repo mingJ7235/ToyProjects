@@ -1,9 +1,12 @@
 package com.core.notification.service.contract;
 
 import com.core.notification.dto.ReturnDto;
+import com.core.template.dto.KakaoPageDto;
+import com.core.template.dto.SearchCriteriaDto;
 import com.core.template.exception.DuplicateException;
 import com.core.template.model.KakaoTemplate;
 import com.core.template.dto.KakaoTemplateDto;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -14,15 +17,17 @@ public interface ProjectKakaoService {
 
     //manage templates
 
-    Long saveTemplate (KakaoTemplateDto templateDto);
+    KakaoTemplateDto saveTemplate (KakaoTemplateDto templateDto) throws DuplicateException;
 
     KakaoTemplate getTemplate (Long templateId);
 
-    List<KakaoTemplate> getListTemplate ();
+    List<KakaoTemplateDto> getListTemplate ();
 
     KakaoTemplateDto updateTemplate (String code, KakaoTemplateDto templateDto) throws DuplicateException;
 
-    void deleteTemplate (Long templateID);
+    int deleteTemplate (String code);
+
+    KakaoPageDto<KakaoTemplateDto> searchTemplate (SearchCriteriaDto critria, Pageable pageable);
 
 
 
