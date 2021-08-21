@@ -2,6 +2,8 @@ package com.core.template.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,5 +17,10 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @CreatedDate
     private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 }
