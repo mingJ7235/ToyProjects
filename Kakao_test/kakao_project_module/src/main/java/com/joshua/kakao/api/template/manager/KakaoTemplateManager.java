@@ -32,7 +32,7 @@ public class KakaoTemplateManager {
         }
 
         KakaoTemplate kakaoTemplate = templateDto.toEntity();
-        return new KakaoTemplateDto(kakaoTemplate);
+        return new KakaoTemplateDto(kakaoTemplateRepository.save(kakaoTemplate));
     }
 
     public KakaoTemplate getTemplate (Long templateId) {
