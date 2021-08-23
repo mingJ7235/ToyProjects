@@ -43,7 +43,7 @@ public class AsyncController {
     @GetMapping ("/nonBlocking")
     public String nonBlockingProcess (@RequestParam (value = "time") Long time) {
         log.info("nonBlocking process start");
-        service.onAsyncBlockingTest(time);
+        service.onAsyncBlockingTestWrapping(time);
         return "non blocking test end";
     }
 }
