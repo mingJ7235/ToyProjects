@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 public class AsyncController {
-
-
     private final AsyncService service;
 
     @GetMapping ("/async")
@@ -24,14 +22,15 @@ public class AsyncController {
         return result;
     }
 
-
     @GetMapping ("/sync")
     public String sync () {
         service.onSync();
         String result = "Sync spring boot";
         log.info(result);
-        log.info("-----------------------------");
+        log.info("-------------------------------");
         return result;
+
+
     }
 
     @GetMapping ("/blocking")

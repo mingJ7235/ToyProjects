@@ -1,17 +1,12 @@
 package com.async.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class AsyncService {
-
-
     @Async
     public void onAsync () {
         try {
@@ -20,7 +15,6 @@ public class AsyncService {
         }catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     @Async
@@ -52,5 +46,4 @@ public class AsyncService {
         }
         log.info("Sync blocking test end");
     }
-
 }
